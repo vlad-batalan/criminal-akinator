@@ -1,6 +1,6 @@
 from model.dto.guess_model import GuessOutput, GuessInput
 from service.data_retrieval_service import DataRetrievalService
-from service.find_question_service import FindQuestionService
+from service.find_question_service import FindQuestionService, FindStrategy
 from service.guess_service import GuessService
 
 # Initialize DataRetrievalService.
@@ -15,7 +15,7 @@ find_question_service = FindQuestionService(target_field)
 guess_service = GuessService(data_retrieval_service, find_question_service)
 
 
-def post_guess_prediction(guess_input: GuessInput) -> GuessOutput:
+def post_guess_prediction(guess_input: GuessInput, strategy: FindStrategy) -> GuessOutput:
     # TODO: Perform parameter validation.
 
-    return guess_service.predict_next_question(guess_input)
+    return guess_service.predict_next_question(guess_input, strategy)

@@ -5,7 +5,7 @@ import fastapi
 
 from model.dto.guess_model import GuessInput, GuessOutput, Question
 from service.data_retrieval_service import DataRetrievalService
-from service.find_question_service import FindQuestionService
+from service.find_question_service import FindQuestionService, FindStrategy
 
 
 class GuessService:
@@ -14,7 +14,7 @@ class GuessService:
         self.find_question_service = find_question_service
         self.target_field = find_question_service.target_field
 
-    def predict_next_question(self, guess_input: GuessInput) -> GuessOutput:
+    def predict_next_question(self, guess_input: GuessInput, strategy: FindStrategy = FindStrategy.CART) -> GuessOutput:
         print(f"Retrieve section based on questions...")
         start_time = time.time()
         section = self.__get_knowledge_section(guess_input.questions)
@@ -36,7 +36,7 @@ class GuessService:
 
         print(f"Processing: {guess_input.questions}...")
         start_time = time.time()
-        result = self.find_question_service.find_best_question(section)
+        result = self.find_question_service.find_best_question(section, strategy)
         end_time = time.time()
         print(f"End processing. Evaluation took: {end_time - start_time} seconds.")
 
