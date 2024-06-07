@@ -1,0 +1,56 @@
+Evaluate model: Output/play_tennis/id3/id3_play_tennis_2024-06-05 10-23-43.json
+Test sample: Resources/PlayTennisTest.csv
+Evaluation result:
+Total accuracy:  1.0
+Accuracy  Yes :  1.0
+Accuracy  No :  1.0
+
+Evaluate model: Output/play_tennis/c45/c45_play_tennis_2024-06-05 10-39-01.pkl
+Test sample: Resources/PlayTennisTest.csv
+Evaluation result:
+Total accuracy:  1.0
+Accuracy  Yes :  1.0
+Accuracy  No :  1.0
+
+Evaluate model: Output/anime_25_93/id3/id3_anime_25_93_2024-06-05 11-43-08.json
+Test sample: Resources/anime_25_classes_93_features_test.csv
+Evaluation result:
+Total accuracy:  0.6
+Accuracy  Ash's Pikachu :  1.0
+Accuracy  Satoru GOJO :  1.0
+Accuracy  Sakura HARUNO :  1.0
+
+Evaluate model: Output/anime_25_93/c45/c45_anime_25_93_2024-06-05 11-46-41.pkl
+Test sample: Resources/anime_25_classes_93_features_test.csv
+Evaluation result:
+Total accuracy:  0.6
+Accuracy  L :  1.0
+Accuracy  Satoru GOJO :  1.0
+Accuracy  Sakura HARUNO :  1.0
+
+Evaluate model: Output/anime_82_172/id3/id3_anime_82_172_2024-06-05 11-44-29.json
+Test sample: Resources/anime_82_classes_172_features_test.csv
+Evaluation result:
+Total accuracy:  0.6
+Accuracy  L :  1.0
+Accuracy  Ash's Pikachu :  1.0
+Accuracy  Sakura HARUNO :  1.0
+
+Evaluate model: Output/anime_82_172/c45/c45_anime_82_172_2024-06-05 11-47-56.pkl
+Test sample: Resources/anime_82_classes_172_features_test.csv
+Evaluation result:
+Total accuracy:  0.4
+Accuracy  L :  1.0
+Accuracy  Sakura HARUNO :  1.0
+
+Evaluate model: Output/anime_full/id3/id3_anime_full_2024_06_04.json
+Test sample: Resources/anime_traits_better_test.csv
+Evaluation result:
+Total accuracy:  0.4
+Accuracy  Satoru GOJO :  1.0
+Accuracy  Sakura HARUNO :  1.0
+
+Evaluate model: Output/anime_full/c45/c45_anime_full_2024-06-04 18-05-28.pkl
+Test sample: Resources/anime_traits_better_test.csv
+Evaluation result:
+Total accuracy:  0.0

@@ -1,0 +1,1399 @@
+Evaluate model: Output/play_tennis/id3/id3_play_tennis_2024-06-05 10-23-43.json
+Test sample: Resources/PlayTennis.csv
+Evaluation result:
+Total accuracy:  1.0
+Accuracy  No :  1.0
+Accuracy  Yes :  1.0
+
+Evaluate model: Output/play_tennis/c45/c45_play_tennis_2024-06-05 10-39-01.pkl
+Test sample: Resources/PlayTennis.csv
+Evaluation result:
+Total accuracy:  1.0
+Accuracy  No :  1.0
+Accuracy  Yes :  1.0
+
+Evaluate model: Output/anime_25_93/id3/id3_anime_25_93_2024-06-05 11-43-08.json
+Test sample: Resources/anime_25_classes_93_features.csv
+Evaluation result:
+Total accuracy:  1.0
+Accuracy  L :  1.0
+Accuracy  Edward ELRIC :  1.0
+Accuracy  Levi :  1.0
+Accuracy  Light YAGAMI :  1.0
+Accuracy  Naruto UZUMAKI :  1.0
+Accuracy  Itachi UCHIHA :  1.0
+Accuracy  Natsu DRAGNEEL :  1.0
+Accuracy  Monkey D. Luffy :  1.0
+Accuracy  Alphonse ELRIC :  1.0
+Accuracy  Zoro RORONOA :  1.0
+Accuracy  Eren JAEGER :  1.0
+Accuracy  Ichigo KUROSAKI :  1.0
+Accuracy  Sasuke UCHIHA :  1.0
+Accuracy  Izuku MIDORIYA :  1.0
+Accuracy  Saitama :  1.0
+Accuracy  Ash's Pikachu :  1.0
+Accuracy  Goku SON :  1.0
+Accuracy  Satoru GOJO :  1.0
+Accuracy  Sakura HARUNO :  1.0
+Accuracy  Vegeta :  1.0
+Accuracy  Near :  1.0
+Accuracy  Inuyasha :  1.0
+Accuracy  All Might :  1.0
+Accuracy  Shanks :  1.0
+Accuracy  Yami Yugi :  1.0
+
+Evaluate model: Output/anime_25_93/c45/c45_anime_25_93_2024-06-05 11-46-41.pkl
+Test sample: Resources/anime_25_classes_93_features.csv
+Evaluation result:
+Total accuracy:  0.4
+Accuracy  L :  1.0
+Accuracy  Light YAGAMI :  1.0
+Accuracy  Natsu DRAGNEEL :  1.0
+Accuracy  Zoro RORONOA :  1.0
+Accuracy  Ichigo KUROSAKI :  1.0
+Accuracy  Satoru GOJO :  1.0
+Accuracy  Sakura HARUNO :  1.0
+Accuracy  All Might :  1.0
+Accuracy  Shanks :  1.0
+Accuracy  Yami Yugi :  1.0
+
+Evaluate model: Output/anime_82_172/id3/id3_anime_82_172_2024-06-05 11-44-29.json
+Test sample: Resources/anime_82_classes_172_features.csv
+Evaluation result:
+Total accuracy:  1.0
+Accuracy  L :  1.0
+Accuracy  Kakashi HATAKE :  1.0
+Accuracy  Edward ELRIC :  1.0
+Accuracy  Levi :  1.0
+Accuracy  Light YAGAMI :  1.0
+Accuracy  Naruto UZUMAKI :  1.0
+Accuracy  Mikasa ACKERMAN :  1.0
+Accuracy  Itachi UCHIHA :  1.0
+Accuracy  Ryuk :  1.0
+Accuracy  Lelouch LAMPEROUGE :  1.0
+Accuracy  Gaara :  1.0
+Accuracy  Natsu DRAGNEEL :  1.0
+Accuracy  Kirito :  1.0
+Accuracy  Erza SCARLET :  1.0
+Accuracy  Roy MUSTANG :  1.0
+Accuracy  Monkey D. Luffy :  1.0
+Accuracy  Shikamaru NARA :  1.0
+Accuracy  Asuna YUUKI :  1.0
+Accuracy  Hinata HYUGA :  1.0
+Accuracy  Alphonse ELRIC :  1.0
+Accuracy  Jiraiya :  1.0
+Accuracy  Zoro RORONOA :  1.0
+Accuracy  Eren JAEGER :  1.0
+Accuracy  Ichigo KUROSAKI :  1.0
+Accuracy  Gray FULLBUSTER :  1.0
+Accuracy  Sasuke UCHIHA :  1.0
+Accuracy  Kanade TACHIBANA :  1.0
+Accuracy  Shoto TODOROKI :  1.0
+Accuracy  Kisuke URAHARA :  1.0
+Accuracy  Happy :  1.0
+Accuracy  Ken KANEKI :  1.0
+Accuracy  Izuku MIDORIYA :  1.0
+Accuracy  Armin ARLELT :  1.0
+Accuracy  Lucy HEARTFILIA :  1.0
+Accuracy  Saitama :  1.0
+Accuracy  Alucard :  1.0
+Accuracy  Kenpachi ZARAKI :  1.0
+Accuracy  Ash's Pikachu :  1.0
+Accuracy  Nezuko KAMADO :  1.0
+Accuracy  Rock Lee :  1.0
+Accuracy  Sasha BRAUS :  1.0
+Accuracy  Goku SON :  1.0
+Accuracy  Minato NAMIKAZE :  1.0
+Accuracy  Izaya ORIHARA :  1.0
+Accuracy  Neji HYUGA :  1.0
+Accuracy  Kurisu MAKISE :  1.0
+Accuracy  Satoru GOJO :  1.0
+Accuracy  Byakuya KUCHIKI :  1.0
+Accuracy  Ulquiorra SCHIFFER :  1.0
+Accuracy  Sakura HARUNO :  1.0
+Accuracy  Tsunade :  1.0
+Accuracy  Inosuke HASHIBIRA :  1.0
+Accuracy  Vegeta :  1.0
+Accuracy  Nami :  1.0
+Accuracy  Near :  1.0
+Accuracy  Ace D. PORTGAS :  1.0
+Accuracy  Robin NICO :  1.0
+Accuracy  Shota AIZAWA :  1.0
+Accuracy  Might GUY :  1.0
+Accuracy  Inuyasha :  1.0
+Accuracy  Tony Tony Chopper :  1.0
+Accuracy  All Might :  1.0
+Accuracy  Shanks :  1.0
+Accuracy  Genos :  1.0
+Accuracy  Deidara :  1.0
+Accuracy  Pain :  1.0
+Accuracy  Erwin SMITH :  1.0
+Accuracy  Orihime INOUE :  1.0
+Accuracy  Usopp :  1.0
+Accuracy  Megumi FUSHIGURO :  1.0
+Accuracy  Brook :  1.0
+Accuracy  Hidan :  1.0
+Accuracy  Dabi :  1.0
+Accuracy  Ymir :  1.0
+Accuracy  Megumi TADOKORO :  1.0
+Accuracy  Mayuri KUROTSUCHI :  1.0
+Accuracy  Elfman STRAUSS :  1.0
+Accuracy  Smoker :  1.0
+Accuracy  Monkey D. Garp :  1.0
+Accuracy  Yami Yugi :  1.0
+Accuracy  Tengen UZUI :  1.0
+Accuracy  Sabo :  1.0
+
+Evaluate model: Output/anime_82_172/c45/c45_anime_82_172_2024-06-05 11-47-56.pkl
+Test sample: Resources/anime_82_classes_172_features.csv
+Evaluation result:
+Total accuracy:  0.21951219512195122
+Accuracy  L :  1.0
+Accuracy  Light YAGAMI :  1.0
+Accuracy  Natsu DRAGNEEL :  1.0
+Accuracy  Zoro RORONOA :  1.0
+Accuracy  Kanade TACHIBANA :  1.0
+Accuracy  Nezuko KAMADO :  1.0
+Accuracy  Sasha BRAUS :  1.0
+Accuracy  Kurisu MAKISE :  1.0
+Accuracy  Sakura HARUNO :  1.0
+Accuracy  Tsunade :  1.0
+Accuracy  Inosuke HASHIBIRA :  1.0
+Accuracy  Robin NICO :  1.0
+Accuracy  Shanks :  1.0
+Accuracy  Pain :  1.0
+Accuracy  Orihime INOUE :  1.0
+Accuracy  Megumi TADOKORO :  1.0
+Accuracy  Mayuri KUROTSUCHI :  1.0
+Accuracy  Monkey D. Garp :  1.0
+
+Evaluate model: Output/anime_full/id3/id3_anime_full_2024_06_04.json
+Test sample: Resources/anime_traits_better.csv
+Evaluation result:
+Total accuracy:  0.9900744416873449
+Accuracy  L :  1.0
+Accuracy  Kakashi HATAKE :  1.0
+Accuracy  Edward ELRIC :  1.0
+Accuracy  Levi :  1.0
+Accuracy  Light YAGAMI :  1.0
+Accuracy  Naruto UZUMAKI :  1.0
+Accuracy  Mikasa ACKERMAN :  1.0
+Accuracy  Itachi UCHIHA :  1.0
+Accuracy  Ryuk :  1.0
+Accuracy  Lelouch LAMPEROUGE :  1.0
+Accuracy  Gaara :  1.0
+Accuracy  Natsu DRAGNEEL :  1.0
+Accuracy  Kirito :  1.0
+Accuracy  Erza SCARLET :  1.0
+Accuracy  Roy MUSTANG :  1.0
+Accuracy  Sebastian MICHAELIS :  1.0
+Accuracy  Monkey D. Luffy :  1.0
+Accuracy  Shikamaru NARA :  1.0
+Accuracy  Asuna YUUKI :  1.0
+Accuracy  Hinata HYUGA :  1.0
+Accuracy  Killua ZOLDYCK :  1.0
+Accuracy  Alphonse ELRIC :  1.0
+Accuracy  Jiraiya :  1.0
+Accuracy  Zoro RORONOA :  1.0
+Accuracy  Eren JAEGER :  1.0
+Accuracy  Death The Kid :  1.0
+Accuracy  Ichigo KUROSAKI :  1.0
+Accuracy  Rin OKUMURA :  1.0
+Accuracy  Gray FULLBUSTER :  1.0
+Accuracy  Taiga AISAKA :  1.0
+Accuracy  Sasuke UCHIHA :  1.0
+Accuracy  Kanade TACHIBANA :  1.0
+Accuracy  C.C. :  1.0
+Accuracy  Takumi USUI :  1.0
+Accuracy  Hikaru HITACHIIN :  1.0
+Accuracy  Maes HUGHES :  1.0
+Accuracy  Shoto TODOROKI :  1.0
+Accuracy  Kisuke URAHARA :  1.0
+Accuracy  Lucy :  1.0
+Accuracy  Haruhi FUJIOKA :  1.0
+Accuracy  Tamaki SUOH :  1.0
+Accuracy  Happy :  1.0
+Accuracy  Ken KANEKI :  1.0
+Accuracy  Izuku MIDORIYA :  1.0
+Accuracy  Armin ARLELT :  1.0
+Accuracy  Yato :  1.0
+Accuracy  Lucy HEARTFILIA :  1.0
+Accuracy  Ciel PHANTOMHIVE :  1.0
+Accuracy  Soul EVANS :  1.0
+Accuracy  Saitama :  1.0
+Accuracy  Alucard :  1.0
+Accuracy  Winry ROCKBELL :  1.0
+Accuracy  Riza HAWKEYE :  1.0
+Accuracy  Kenpachi ZARAKI :  1.0
+Accuracy  Hange ZOE :  1.0
+Accuracy  Ash's Pikachu :  1.0
+Accuracy  Nezuko KAMADO :  1.0
+Accuracy  Katsuki BAKUGO :  1.0
+Accuracy  Rock Lee :  1.0
+Accuracy  Misaki AYUZAWA :  1.0
+Accuracy  Sasha BRAUS :  1.0
+Accuracy  Goku SON :  1.0
+Accuracy  Tanjirou KAMADO :  1.0
+Accuracy  Shizuo HEIWAJIMA :  1.0
+Accuracy  Yuno GASAI :  1.0
+Accuracy  Minato NAMIKAZE :  1.0
+Accuracy  Kyo SOHMA :  1.0
+Accuracy  Izaya ORIHARA :  1.0
+Accuracy  Alex Louis ARMSTRONG :  1.0
+Accuracy  Toshiro HITSUGAYA :  1.0
+Accuracy  Sanji :  1.0
+Accuracy  Gon FREECSS :  1.0
+Accuracy  Rukia KUCHIKI :  1.0
+Accuracy  Franken STEIN :  1.0
+Accuracy  Yoruichi SHIHOUIN :  1.0
+Accuracy  Neji HYUGA :  1.0
+Accuracy  Hisoka MOROW :  1.0
+Accuracy  Misa AMANE :  1.0
+Accuracy  Shoyo HINATA :  1.0
+Accuracy  Howl :  1.0
+Accuracy  Spike SPIEGEL :  1.0
+Accuracy  Kyoya OOTORI :  1.0
+Accuracy  Shiro :  1.0
+Accuracy  Haruhi SUZUMIYA :  1.0
+Accuracy  Celty STURLUSON :  1.0
+Accuracy  Maka ALBARN :  1.0
+Accuracy  Undertaker :  1.0
+Accuracy  Hei :  1.0
+Accuracy  Touka KIRISHIMA :  1.0
+Accuracy  Saber :  1.0
+Accuracy  Kurisu MAKISE :  1.0
+Accuracy  Konata IZUMI :  1.0
+Accuracy  Satoru GOJO :  1.0
+Accuracy  Mitsukuni HANINOZUKA :  1.0
+Accuracy  Byakuya KUCHIKI :  1.0
+Accuracy  Saeko BUSUJIMA :  1.0
+Accuracy  Ulquiorra SCHIFFER :  1.0
+Accuracy  Sora :  1.0
+Accuracy  Yuri NAKAMURA :  1.0
+Accuracy  Sakura HARUNO :  1.0
+Accuracy  Tsunade :  1.0
+Accuracy  Karma AKABANE :  1.0
+Accuracy  Tobio KAGEYAMA :  1.0
+Accuracy  Inosuke HASHIBIRA :  1.0
+Accuracy  Kamina :  1.0
+Accuracy  Koro-sensei :  1.0
+Accuracy  Mirajane STRAUSS :  1.0
+Accuracy  Rintaro OKABE :  1.0
+Accuracy  Vegeta :  1.0
+Accuracy  Nami :  1.0
+Accuracy  Near :  1.0
+Accuracy  Kallen STADTFELD :  1.0
+Accuracy  Ace D. PORTGAS :  1.0
+Accuracy  Robin NICO :  1.0
+Accuracy  Kurapika :  1.0
+Accuracy  Tomoya OKAZAKI :  1.0
+Accuracy  Black Star :  1.0
+Accuracy  Nagisa FURUKAWA :  1.0
+Accuracy  Shota AIZAWA :  1.0
+Accuracy  Grimmjow JEAGERJAQUES :  1.0
+Accuracy  Zero KIRYU :  1.0
+Accuracy  Eijiro KIRISHIMA :  1.0
+Accuracy  Might GUY :  1.0
+Accuracy  Gajeel REDFOX :  1.0
+Accuracy  Inuyasha :  1.0
+Accuracy  Gintoki SAKATA :  1.0
+Accuracy  Takashi MORINOZUKA :  1.0
+Accuracy  Nyu :  1.0
+Accuracy  Zenitsu AGATSUMA :  1.0
+Accuracy  Yuzuru OTONASHI :  1.0
+Accuracy  Mei MISAKI :  1.0
+Accuracy  Juuzou SUZUYA :  1.0
+Accuracy  Tony Tony Chopper :  1.0
+Accuracy  Renji ABARAI :  1.0
+Accuracy  Holo :  1.0
+Accuracy  All Might :  1.0
+Accuracy  Shinigami :  1.0
+Accuracy  Revy :  1.0
+Accuracy  Nagisa SHIOTA :  1.0
+Accuracy  Shanks :  1.0
+Accuracy  Genos :  1.0
+Accuracy  Izumi CURTIS :  1.0
+Accuracy  Yoko LITTNER :  1.0
+Accuracy  Hitagi SENJOGAHARA :  1.0
+Accuracy  Ban :  1.0
+Accuracy  Yui :  1.0
+Accuracy  Annie LEONHART :  1.0
+Accuracy  Greed :  1.0
+Accuracy  Yu NISHINOYA :  1.0
+Accuracy  Allen WALKER :  1.0
+Accuracy  Gin ICHIMARU :  1.0
+Accuracy  Osamu DAZAI :  1.0
+Accuracy  Tohru HONDA :  1.0
+Accuracy  Deidara :  1.0
+Accuracy  Jellal FERNANDES :  1.0
+Accuracy  Mio AKIYAMA :  1.0
+Accuracy  Rias GREMORY :  1.0
+Accuracy  Akame :  1.0
+Accuracy  Yuji ITADORI :  1.0
+Accuracy  Tomoe :  1.0
+Accuracy  Tetsuya KUROKO :  1.0
+Accuracy  Hideyoshi NAGACHIKA :  1.0
+Accuracy  Tsubaki NAKATSUKASA :  1.0
+Accuracy  Kenshin HIMURA :  1.0
+Accuracy  Grell SUTCLIFFE :  1.0
+Accuracy  Akamaru :  1.0
+Accuracy  Ochaco URARAKA :  1.0
+Accuracy  Juvia LOXAR :  1.0
+Accuracy  Kon :  1.0
+Accuracy  Klein :  1.0
+Accuracy  Vash the Stampede :  1.0
+Accuracy  Rin TOHSAKA :  1.0
+Accuracy  Orochimaru :  1.0
+Accuracy  Pain :  1.0
+Accuracy  Loke :  1.0
+Accuracy  Calcifer :  1.0
+Accuracy  Neliel Tu ODELSCHWANCK :  1.0
+Accuracy  Yuki NAGATO :  1.0
+Accuracy  Koshi SUGAWARA :  1.0
+Accuracy  Jean KIRSCHTEIN :  1.0
+Accuracy  Erwin SMITH :  1.0
+Accuracy  Wendy MARVELL :  1.0
+Accuracy  Kuro :  1.0
+Accuracy  Tsuyu ASUI :  1.0
+Accuracy  Orihime INOUE :  1.0
+Accuracy  Yui HIRASAWA :  1.0
+Accuracy  Victor NIKIFOROV :  1.0
+Accuracy  T.K. :  1.0
+Accuracy  Usopp :  1.0
+Accuracy  Denki KAMINARI :  1.0
+Accuracy  Asuma SARUTOBI :  1.0
+Accuracy  Akio FURUKAWA :  1.0
+Accuracy  Megumi FUSHIGURO :  1.0
+Accuracy  Rem :  1.0
+Accuracy  Ryuuko MATOI :  1.0
+Accuracy  Sesshomaru :  1.0
+Accuracy  Kiba INUZUKA :  1.0
+Accuracy  Blair :  1.0
+Accuracy  Kenma KOZUME :  1.0
+Accuracy  Kei TSUKISHIMA :  1.0
+Accuracy  Brook :  1.0
+Accuracy  Envy :  1.0
+Accuracy  Yukine :  1.0
+Accuracy  Tomoyo SAKAGAMI :  1.0
+Accuracy  Hideki HINATA :  1.0
+Accuracy  Ray :  1.0
+Accuracy  Kyon :  1.0
+Accuracy  Kyuubi :  1.0
+Accuracy  Yuki SOHMA :  1.0
+Accuracy  Temari :  1.0
+Accuracy  Scar :  1.0
+Accuracy  Suzaku KURURUGI :  1.0
+Accuracy  Sawako KURONUMA :  1.0
+Accuracy  Homura AKEMI :  1.0
+Accuracy  Excalibur :  1.0
+Accuracy  Fuuko IBUKI :  1.0
+Accuracy  Azusa NAKANO :  1.0
+Accuracy  Ling YAO :  1.0
+Accuracy  Shouko NISHIMIYA :  1.0
+Accuracy  Masaomi KIDA :  1.0
+Accuracy  Souma YUKIHIRA :  1.0
+Accuracy  Mikoto MISAKA :  1.0
+Accuracy  Shinobu OSHINO :  1.0
+Accuracy  Shunsui KYORAKU :  1.0
+Accuracy  Fumikage TOKOYAMI :  1.0
+Accuracy  Haku :  1.0
+Accuracy  Shigure SOHMA :  1.0
+Accuracy  Hiyori IKI :  1.0
+Accuracy  Haruka NANASE :  1.0
+Accuracy  Zero Two :  1.0
+Accuracy  Hollow Ichigo :  1.0
+Accuracy  Meliodas :  1.0
+Accuracy  Minene URYUU :  1.0
+Accuracy  Mayuri SHIINA :  1.0
+Accuracy  Aru AKISE :  1.0
+Accuracy  Rikka TAKANASHI :  1.0
+Accuracy  Decim :  1.0
+Accuracy  Rangiku MATSUMOTO :  1.0
+Accuracy  Kyou FUJIBAYASHI :  1.0
+Accuracy  Crona :  1.0
+Accuracy  Giyuu TOMIOKA :  1.0
+Accuracy  Levy MCGARDEN :  1.0
+Accuracy  Masami IWASAWA :  1.0
+Accuracy  Ryunosuke TANAKA :  1.0
+Accuracy  Tobi :  1.0
+Accuracy  Ash KETCHUM :  1.0
+Accuracy  Hatsuharu SOHMA :  1.0
+Accuracy  Akeno HIMEJIMA :  1.0
+Accuracy  Simon :  1.0
+Accuracy  Edward :  1.0
+Accuracy  Christa LENZ :  1.0
+Accuracy  Koyomi ARARAGI :  1.0
+Accuracy  Finnian :  1.0
+Accuracy  Mugen :  1.0
+Accuracy  Minori KUSHIEDA :  1.0
+Accuracy  Sadao MAOU :  1.0
+Accuracy  Mizore SHIRAYUKI :  1.0
+Accuracy  Laxus DREYAR :  1.0
+Accuracy  Guts :  1.0
+Accuracy  Jibril :  1.0
+Accuracy  Ino YAMANAKA :  1.0
+Accuracy  Uryu ISHIDA :  1.0
+Accuracy  Olivier Mira ARMSTRONG :  1.0
+Accuracy  Hinami FUEGUCHI :  1.0
+Accuracy  Nobara KUGISAKI :  1.0
+Accuracy  Momo YAOYOROZU :  1.0
+Accuracy  Seras VICTORIA :  1.0
+Accuracy  Kotomi ICHINOSE :  1.0
+Accuracy  Chii :  1.0
+Accuracy  Rei AYANAMI :  1.0
+Accuracy  Kusuo SAIKI :  1.0
+Accuracy  Yachiru KUSAJISHI :  1.0
+Accuracy  Mello :  1.0
+Accuracy  Yuuri KATSUKI :  1.0
+Accuracy  Moka AKASHIYA :  1.0
+Accuracy  Archer :  1.0
+Accuracy  Franky :  1.0
+Accuracy  Leorio PALADIKNIGHT :  1.0
+Accuracy  Shinya KOUGAMI :  1.0
+Accuracy  Chihiro OGINO :  1.0
+Accuracy  Megumin :  1.0
+Accuracy  Emma :  1.0
+Accuracy  Mephisto PHELES :  1.0
+Accuracy  Asuka Langley SORYU :  1.0
+Accuracy  Daichi SAWAMURA :  1.0
+Accuracy  Piccolo :  1.0
+Accuracy  Yukio OKUMURA :  1.0
+Accuracy  Kaname KURAN :  1.0
+Accuracy  Conny SPRINGER :  1.0
+Accuracy  Norman :  1.0
+Accuracy  Makoto TACHIBANA :  1.0
+Accuracy  Izumi MIYAMURA :  1.0
+Accuracy  Makarov DREYAR :  1.0
+Accuracy  Hancock BOA :  1.0
+Accuracy  Sai :  1.0
+Accuracy  Mystogan :  1.0
+Accuracy  Zangetsu :  1.0
+Accuracy  Cana ALBERONA :  1.0
+Accuracy  Violet EVERGARDEN :  1.0
+Accuracy  Rimuru TEMPEST :  1.0
+Accuracy  Ritsu TAINAKA :  1.0
+Accuracy  Dracule MIHAWK :  1.0
+Accuracy  Joseph JOESTAR :  1.0
+Accuracy  Zabuza MOMOCHI :  1.0
+Accuracy  Hachiman HIKIGAYA :  1.0
+Accuracy  Kyoujurou RENGOKU :  1.0
+Accuracy  Faye VALENTINE :  1.0
+Accuracy  Yin :  1.0
+Accuracy  Shouya ISHIDA :  1.0
+Accuracy  Kyoka JIRO :  1.0
+Accuracy  Taiga KAGAMI :  1.0
+Accuracy  Hak SON :  1.0
+Accuracy  Daiki AOMINE :  1.0
+Accuracy  Raphtalia :  1.0
+Accuracy  Ryouta KISE :  1.0
+Accuracy  Meiko HONMA :  1.0
+Accuracy  Trafalgar LAW :  1.0
+Accuracy  Asahi AZUMANE :  1.0
+Accuracy  Tsumugi KOTOBUKI :  1.0
+Accuracy  Houtarou OREKI :  1.0
+Accuracy  Iruka UMINO :  1.0
+Accuracy  Esdeath :  1.0
+Accuracy  Kaori MIYAZONO :  1.0
+Accuracy  Yuri PLISETSKY :  1.0
+Accuracy  Momiji SOHMA :  1.0
+Accuracy  Rin MATSUOKA :  1.0
+Accuracy  Ash Lynx :  1.0
+Accuracy  Louise Francoise LE BLANC DE LA VALLIERE :  1.0
+Accuracy  Shura KIRIGAKURE :  1.0
+Accuracy  Shana :  1.0
+Accuracy  Shiina :  1.0
+Accuracy  Uta :  1.0
+Accuracy  Sousuke SAGARA :  1.0
+Accuracy  Lavi :  1.0
+Accuracy  Kagome HIGURASHI :  1.0
+Accuracy  Morgiana :  1.0
+Accuracy  Jyushiro UKITAKE :  1.0
+Accuracy  Keima KATSURAGI :  1.0
+Accuracy  Mey-Rin :  1.0
+Accuracy  Yasutora SADO :  1.0
+Accuracy  Gildarts CLIVE :  1.0
+Accuracy  Future Trunks :  1.0
+Accuracy  Tooru OIKAWA :  1.0
+Accuracy  Haru YOSHIDA :  1.0
+Accuracy  Mikuru ASAHINA :  1.0
+Accuracy  Eikichi ONIZUKA :  1.0
+Accuracy  Senkuu ISHIGAMI :  1.0
+Accuracy  Tenya IIDA :  1.0
+Accuracy  Mashiro SHIINA :  1.0
+Accuracy  Eucliwood HELLSCYTHE :  1.0
+Accuracy  Kota HIRANO :  1.0
+Accuracy  Patricia THOMPSON :  1.0
+Accuracy  Gohan SON :  1.0
+Accuracy  Chika FUJIWARA :  1.0
+Accuracy  Shino ABURAME :  1.0
+Accuracy  Naofumi IWATANI :  1.0
+Accuracy  Inori YUZURIHA :  1.0
+Accuracy  Virgo :  1.0
+Accuracy  Dante :  1.0
+Accuracy  Totoro :  1.0
+Accuracy  Nana :  1.0
+Accuracy  Ami KAWASHIMA :  1.0
+Accuracy  Ayame SOHMA :  1.0
+Accuracy  Konan :  1.0
+Accuracy  Mako MANKANSHOKU :  1.0
+Accuracy  Hatori SOHMA :  1.0
+Accuracy  Rika FURUDE :  1.0
+Accuracy  Misato KATSURAGI :  1.0
+Accuracy  Ikkaku MADARAME :  1.0
+Accuracy  Spirit ALBARN :  1.0
+Accuracy  Mikaela HYAKUYA :  1.0
+Accuracy  Sasori :  1.0
+Accuracy  Toge INUMAKI :  1.0
+Accuracy  Truck-kun :  1.0
+Accuracy  Yu KANDA :  1.0
+Accuracy  Koneko TOUJOU :  1.0
+Accuracy  Kaguya SHINOMIYA :  1.0
+Accuracy  Mafuyu SATO :  1.0
+Accuracy  Silica :  1.0
+Accuracy  Kagura :  1.0
+Accuracy  Lisbeth :  1.0
+Accuracy  Youhei SUNOHARA :  1.0
+Accuracy  Shuhei HISAGI :  1.0
+Accuracy  Suguha KIRIGAYA :  1.0
+Accuracy  Clare :  1.0
+Accuracy  Jotaro KUJO :  1.0
+Accuracy  Tenten :  1.0
+Accuracy  Rei MIYAMOTO :  1.0
+Accuracy  Akatsuki :  1.0
+Accuracy  Lust :  1.0
+Accuracy  Agil :  1.0
+Accuracy  Hidan :  1.0
+Accuracy  Momonga :  1.0
+Accuracy  Shigeo KAGEYAMA :  1.0
+Accuracy  Jin :  1.0
+Accuracy  Migi :  1.0
+Accuracy  Kagami HIIRAGI :  1.0
+Accuracy  Chitoge KIRISAKI :  1.0
+Accuracy  Madoka KANAME :  1.0
+Accuracy  Choji AKIMICHI :  1.0
+Accuracy  Kuroneko :  1.0
+Accuracy  Kento NANAMI :  1.0
+Accuracy  Kaonashi :  1.0
+Accuracy  Yumeko JABAMI :  1.0
+Accuracy  Anko MITARASHI :  1.0
+Accuracy  Hanako :  1.0
+Accuracy  Chizuru YOSHIDA :  1.0
+Accuracy  Van HOHENHEIM :  1.0
+Accuracy  Rena RYUUGUU :  1.0
+Accuracy  Keishin UKAI :  1.0
+Accuracy  Black Hayate :  1.0
+Accuracy  Mayoi HACHIKUJI :  1.0
+Accuracy  Shota KAZEHAYA :  1.0
+Accuracy  Mina ASHIDO :  1.0
+Accuracy  Nagisa HAZUKI :  1.0
+Accuracy  Sophie HATTER :  1.0
+Accuracy  Arataka REIGEN :  1.0
+Accuracy  Jean HAVOC :  1.0
+Accuracy  Tatsumi :  1.0
+Accuracy  Accelerator :  1.0
+Accuracy  Elizabeth THOMPSON :  1.0
+Accuracy  Ayato NAOI :  1.0
+Accuracy  Leone :  1.0
+Accuracy  Bell CRANEL :  1.0
+Accuracy  Anya FORGER :  1.0
+Accuracy  Kanna KAMUI :  1.0
+Accuracy  Kisame HOSHIGAKI :  1.0
+Accuracy  Sousuke AIZEN :  1.0
+Accuracy  Emilia :  1.0
+Accuracy  Saya TAKAGI :  1.0
+Accuracy  Sanae FURUKAWA :  1.0
+Accuracy  Mai SAKURAJIMA :  1.0
+Accuracy  Master Roshi :  1.0
+Accuracy  Kurenai YUHI :  1.0
+Accuracy  Dabi :  1.0
+Accuracy  Shiroe :  1.0
+Accuracy  Sango :  1.0
+Accuracy  Lan Fan :  1.0
+Accuracy  Yona :  1.0
+Accuracy  Kyouko KIRIGIRI :  1.0
+Accuracy  Kou MABUCHI :  1.0
+Accuracy  Mine :  1.0
+Accuracy  Nao TOMORI :  1.0
+Accuracy  Tadashi YAMAGUCHI :  1.0
+Accuracy  Soifon :  1.0
+Accuracy  Issei HYOUDOU :  1.0
+Accuracy  Jin-Woo SUNG :  1.0
+Accuracy  Shinoa HIRAGI :  1.0
+Accuracy  Shinji IKARI :  1.0
+Accuracy  Hestia :  1.0
+Accuracy  Chuuya NAKAHARA :  1.0
+Accuracy  Gamabunta :  1.0
+Accuracy  Kushina :  1.0
+Accuracy  Shino ASADA :  1.0
+Accuracy  Whitebeard :  1.0
+Accuracy  Yuichiro HYAKUYA :  1.0
+Accuracy  Killer B :  1.0
+Accuracy  Yukino YUKINOSHITA :  1.0
+Accuracy  Diane :  1.0
+Accuracy  Kirara :  1.0
+Accuracy  Ryomen Sukuna :  1.0
+Accuracy  Miroku :  1.0
+Accuracy  Brock :  1.0
+Accuracy  Kyoko SAKURA :  1.0
+Accuracy  Himiko TOGA :  1.0
+Accuracy  Kiyotaka AYANOKOUJI :  1.0
+Accuracy  Jet BLACK :  1.0
+Accuracy  Cloud STRIFE :  1.0
+Accuracy  Nanami MOMOZONO :  1.0
+Accuracy  Kurumi TOKISAKI :  1.0
+Accuracy  Kazuma SATOU :  1.0
+Accuracy  Eiji OKUMURA :  1.0
+Accuracy  Atsushi NAKAJIMA :  1.0
+Accuracy  Kousei ARIMA :  1.0
+Accuracy  Chrollo LUCILFER :  1.0
+Accuracy  Aladdin :  1.0
+Accuracy  Shinji HIRAKO :  1.0
+Accuracy  Albedo :  1.0
+Accuracy  Koutarou BOKUTO :  1.0
+Accuracy  Bardroy :  1.0
+Accuracy  Yamato :  1.0
+Accuracy  Reiner BRAUN :  1.0
+Accuracy  Ayato KIRISHIMA :  1.0
+Accuracy  Zen WISTERIA :  1.0
+Accuracy  Pakkun :  1.0
+Accuracy  Haruko HARUHARA :  1.0
+Accuracy  Aquarius :  1.0
+Accuracy  Shinra KISHITANI :  1.0
+Accuracy  Bishamonten :  1.0
+Accuracy  Shizuka MARIKAWA :  1.0
+Accuracy  Mion SONOZAKI :  1.0
+Accuracy  Ritsuka UENOYAMA :  1.0
+Accuracy  Yu ISHIGAMI :  1.0
+Accuracy  Stephanie DOLA :  1.0
+Accuracy  Aqua :  1.0
+Accuracy  Kaname CHIDORI :  1.0
+Accuracy  Yukiteru AMANO :  1.0
+Accuracy  Mavis VERMILION :  1.0
+Accuracy  Satoru FUJINUMA :  1.0
+Accuracy  Yor BRIAR :  1.0
+Accuracy  Maki ZEN'IN :  1.0
+Accuracy  Loid FORGER :  1.0
+Accuracy  Chelsea :  1.0
+Accuracy  Rider :  1.0
+Accuracy  Plue :  1.0
+Accuracy  Satsuki KIRYUUIN :  1.0
+Accuracy  Ymir :  1.0
+Accuracy  Toshiro HIJIKATA :  1.0
+Accuracy  Shinichi IZUMI :  1.0
+Accuracy  Euphemia LI BRITANNIA :  1.0
+Accuracy  Biscuit KRUEGER :  1.0
+Accuracy  Suzuha AMANE :  1.0
+Accuracy  Tanaka :  1.0
+Accuracy  Hiruzen SARUTOBI :  1.0
+Accuracy  Lubbock :  1.0
+Accuracy  Kosaki ONODERA :  1.0
+Accuracy  Kankuro :  1.0
+Accuracy  Gilgamesh :  1.0
+Accuracy  Nana OSAKI :  1.0
+Accuracy  Pantherlily :  1.0
+Accuracy  Kofuku EBISU :  1.0
+Accuracy  Tohru :  1.0
+Accuracy  Emi YUSA :  1.0
+Accuracy  Shuu TSUKIYAMA :  1.0
+Accuracy  James :  1.0
+Accuracy  Akane TSUNEMORI :  1.0
+Accuracy  Gin :  1.0
+Accuracy  Kiyoko SHIMIZU :  1.0
+Accuracy  Shinobu KOCHOU :  1.0
+Accuracy  San :  1.0
+Accuracy  Ginko :  1.0
+Accuracy  Dot PYXIS :  1.0
+Accuracy  Ranpo EDOGAWA :  1.0
+Accuracy  Dio BRANDO :  1.0
+Accuracy  Silvers RAYLEIGH :  1.0
+Accuracy  Mao :  1.0
+Accuracy  Megumi TADOKORO :  1.0
+Accuracy  Ryu SANADA :  1.0
+Accuracy  Motoko KUSANAGI :  1.0
+Accuracy  Arisa UOTANI :  1.0
+Accuracy  Subaru NATSUKI :  1.0
+Accuracy  Mayuri KUROTSUCHI :  1.0
+Accuracy  Shirayuki :  1.0
+Accuracy  Saito HIRAGA :  1.0
+Accuracy  Darkness :  1.0
+Accuracy  Lloyd ASPLUND :  1.0
+Accuracy  Yuzuru NISHIMIYA :  1.0
+Accuracy  Tatsuya SHIBA :  1.0
+Accuracy  Sinbad :  1.0
+Accuracy  Saki HANAJIMA :  1.0
+Accuracy  Shin-ah :  1.0
+Accuracy  Alice :  1.0
+Accuracy  Elfman STRAUSS :  1.0
+Accuracy  Umehito NEKOZAWA :  1.0
+Accuracy  Irina JELAVIC :  1.0
+Accuracy  Mifune :  1.0
+Accuracy  Illyasviel VON EINZBERN :  1.0
+Accuracy  Langa HASEGAWA :  1.0
+Accuracy  Asta :  1.0
+Accuracy  Mirai KURIYAMA :  1.0
+Accuracy  Reki KYAN :  1.0
+Accuracy  Victorique :  1.0
+Accuracy  Shintarou MIDORIMA :  1.0
+Accuracy  Nishio NISHIKI :  1.0
+Accuracy  Shirou FUJIMOTO :  1.0
+Accuracy  Hitoshi SHINSO :  1.0
+Accuracy  Yuuko ICHIHARA :  1.0
+Accuracy  Shiemi MORIYAMA :  1.0
+Accuracy  Kirino KOUSAKA :  1.0
+Accuracy  Tatsumi OGA :  1.0
+Accuracy  Miyuki SHIROGANE :  1.0
+Accuracy  Android 18 :  1.0
+Accuracy  Shion SONOZAKI :  1.0
+Accuracy  Kayo HINAZUKI :  1.0
+Accuracy  Mami TOMOE :  1.0
+Accuracy  Yoshimura :  1.0
+Accuracy  Elizabeth LIONES :  1.0
+Accuracy  Seijuurou AKASHI :  1.0
+Accuracy  Suruga KANBARU :  1.0
+Accuracy  Hawk :  1.0
+Accuracy  Shirou ASHIYA :  1.0
+Accuracy  Bulat :  1.0
+Accuracy  Nezumi :  1.0
+Accuracy  Kouichi SAKAKIBARA :  1.0
+Accuracy  Yasuko TAKASU :  1.0
+Accuracy  Petra RALL :  1.0
+Accuracy  Eru CHITANDA :  1.0
+Accuracy  Tamaki AMAJIKI :  1.0
+Accuracy  Kotarou KATSURA :  1.0
+Accuracy  Ushio :  1.0
+Accuracy  Zack :  1.0
+Accuracy  Ryuji SUGURO :  1.0
+Accuracy  Zeref :  1.0
+Accuracy  Isaac DIAN :  1.0
+Accuracy  Rei RYUGAZAKI :  1.0
+Accuracy  Jinta YADOMI :  1.0
+Accuracy  Tadaomi KARASUMA :  1.0
+Accuracy  Sena KASHIWAZAKI :  1.0
+Accuracy  Tomoko KUROKI :  1.0
+Accuracy  Alibaba SALUJA :  1.0
+Accuracy  Teresa :  1.0
+Accuracy  Integra Fairbrook Wingates HELLSING :  1.0
+Accuracy  Senji KIYOMASA :  1.0
+Accuracy  King :  1.0
+Accuracy  Shirley FENETTE :  1.0
+Accuracy  Tsubasa HANEKAWA :  1.0
+Accuracy  Simon BREZHNEV :  1.0
+Accuracy  Konohamaru SARUTOBI :  1.0
+Accuracy  Kurumu KURONO :  1.0
+Accuracy  Smoker :  1.0
+Accuracy  Kazuma :  1.0
+Accuracy  Sakura KINOMOTO :  1.0
+Accuracy  Kiritsugu EMIYA :  1.0
+Accuracy  Ayane YANO :  1.0
+Accuracy  Tomura SHIGARAKI :  1.0
+Accuracy  Kyoko MOGAMI :  1.0
+Accuracy  Lucifer :  1.0
+Accuracy  Kabuto YAKUSHI :  1.0
+Accuracy  Barry The Chopper :  1.0
+Accuracy  Yuu OTOSAKA :  1.0
+Accuracy  Bon KUREI :  1.0
+Accuracy  Obito UCHIHA :  1.0
+Accuracy  Ikuto TSUKIYOMI :  1.0
+Accuracy  Viral :  1.0
+Accuracy  Bulma :  1.0
+Accuracy  Sougo OKITA :  1.0
+Accuracy  Elizabeth MIDDLEFORD :  1.0
+Accuracy  Miria HARVENT :  1.0
+Accuracy  Touta MATSUDA :  1.0
+Accuracy  Ikaros :  1.0
+Accuracy  Misty :  1.0
+Accuracy  Coyote STARRK :  1.0
+Accuracy  Alois TRANCY :  1.0
+Accuracy  Futaba YOSHIOKA :  1.0
+Accuracy  Itsuki KOIZUMI :  1.0
+Accuracy  Mikoto MIKOSHIBA :  1.0
+Accuracy  Gilbert NIGHTRAY :  1.0
+Accuracy  Shizuku MIZUTANI :  1.0
+Accuracy  Haruki NAKAYAMA :  1.0
+Accuracy  Koutarou AMON :  1.0
+Accuracy  Black-Haired Woman :  1.0
+Accuracy  Aries :  1.0
+Accuracy  Manjiro SANO :  1.0
+Accuracy  Freed JUSTINE :  1.0
+Accuracy  Kuroyukihime :  1.0
+Accuracy  Staz Charlie BLOOD :  1.0
+Accuracy  Monkey D. Garp :  1.0
+Accuracy  Maria ROSS :  1.0
+Accuracy  Lenalee LEE :  1.0
+Accuracy  Teppei KIYOSHI :  1.0
+Accuracy  Lisanna STRAUSS :  1.0
+Accuracy  Charle :  1.0
+Accuracy  Kyoya HIBARI :  1.0
+Accuracy  Chiyo SAKURA :  1.0
+Accuracy  Kimimaro :  1.0
+Accuracy  Naruko ANJOU :  1.0
+Accuracy  Erina NAKIRI :  1.0
+Accuracy  Meme OSHINO :  1.0
+Accuracy  Kakashi no Kabu :  1.0
+Accuracy  Gamakichi :  1.0
+Accuracy  Medusa GORGON :  1.0
+Accuracy  Takashi NATSUME :  1.0
+Accuracy  Soushi MIKETSUKAMI :  1.0
+Accuracy  Mitsuha MIYAMIZU :  1.0
+Accuracy  Erika KARISAWA :  1.0
+Accuracy  Yami Yugi :  1.0
+Accuracy  Shippo :  1.0
+Accuracy  Usagi TSUKINO :  1.0
+Accuracy  Krillin :  1.0
+Accuracy  Kraft LAWRENCE :  1.0
+Accuracy  Ai HAYASAKA :  1.0
+Accuracy  Elucia DE LUTE IMA :  1.0
+Accuracy  Nia TEPPELIN :  1.0
+Accuracy  Asia ARGENTO :  1.0
+Accuracy  Lala Satalin DEVILUKE :  1.0
+Accuracy  Isshin KUROSAKI :  1.0
+Accuracy  Tohka YATOGAMI :  1.0
+Accuracy  Yui YUIGAHAMA :  1.0
+Accuracy  Hiyori SARUGAKI :  1.0
+Accuracy  Beatrice :  1.0
+Accuracy  Sakuta AZUSAGAWA :  1.0
+Accuracy  Ais WALLENSTEIN :  1.0
+Accuracy  King BRADLEY :  1.0
+Accuracy  Meruem :  1.0
+Accuracy  Renzou SHIMA :  1.0
+Accuracy  Mukuro ROKUDO :  1.0
+Accuracy  Italy :  1.0
+Accuracy  Hideyoshi KINOSHITA :  1.0
+Accuracy  Nicholas D. WOLFWOOD :  1.0
+Accuracy  Yuuta TOGASHI :  1.0
+Accuracy  Speed o?Sound Sonic :  1.0
+Accuracy  Itaru HASHIDA :  1.0
+Accuracy  Shun KAIDOU :  1.0
+Accuracy  Mikoto SUOH :  1.0
+Accuracy  Filo :  1.0
+Accuracy  Mizuki :  1.0
+Accuracy  Tsukasa HIIRAGI :  1.0
+Accuracy  Balalaika :  1.0
+Accuracy  Nyanko-sensei :  1.0
+Accuracy  Shougo MAKISHIMA :  1.0
+Accuracy  Tanya DEGURECHAFF :  1.0
+Accuracy  Obi :  1.0
+Accuracy  Sayaka MIKI :  1.0
+Accuracy  May CHANG :  1.0
+Accuracy  Kuroko SHIRAI :  1.0
+Accuracy  Hiei :  1.0
+Accuracy  Karen ARARAGI :  1.0
+Accuracy  Ui HIRASAWA :  1.0
+Accuracy  Agni :  1.0
+Accuracy  Pluto :  1.0
+Accuracy  Marco BODT :  1.0
+Accuracy  Nadeko SENGOKU :  1.0
+Accuracy  Ai ENMA :  1.0
+Accuracy  Kyohei KADOTA :  1.0
+Accuracy  Nunnally LAMPEROUGE :  1.0
+Accuracy  Chihaya AYASE :  1.0
+Accuracy  Kei TAKISHIMA :  1.0
+Accuracy  Ram :  1.0
+Accuracy  Ayumu AIKAWA :  1.0
+Accuracy  Jinbei :  1.0
+Accuracy  Rory MERCURY :  1.0
+Accuracy  Mary SAOTOME :  1.0
+Accuracy  Yami :  1.0
+Accuracy  Ken RYUGUJI :  1.0
+Accuracy  Ryuunosuke AKUTAGAWA :  1.0
+Accuracy  Gareki :  1.0
+Accuracy  Ittetsu TAKEDA :  1.0
+Accuracy  Ayumu KASUGA :  1.0
+Accuracy  Oz VESSALIUS :  1.0
+Accuracy  Tengen UZUI :  1.0
+Accuracy  Guren ICHINOSE :  1.0
+Accuracy  Ryou FUJIBAYASHI :  1.0
+Accuracy  Xerxes BREAK :  1.0
+Accuracy  Kenji HARIMA :  1.0
+Accuracy  Conan EDOGAWA :  1.0
+Accuracy  Faris NYANNYAN :  1.0
+Accuracy  Noriaki KAKYOIN :  1.0
+Accuracy  Risa KOIZUMI :  1.0
+Accuracy  Hanabusa AIDOU :  1.0
+Accuracy  Kuroh YATOGAMI :  1.0
+Accuracy  Sakonji UROKODAKI :  1.0
+Accuracy  Eri :  1.0
+Accuracy  Rock :  1.0
+Accuracy  Sawako YAMANAKA :  1.0
+Accuracy  Legoshi :  1.0
+Accuracy  Yashiro ISANA :  1.0
+Accuracy  Makoto NAEGI :  1.0
+Accuracy  Shirou EMIYA :  1.0
+Accuracy  Yoko Kurama :  1.0
+Accuracy  Aoi TODO :  1.0
+Accuracy  Doppo KUNIKIDA :  1.0
+Accuracy  Akihiko KAJI :  1.0
+Accuracy  Celestia LUDENBERG :  1.0
+Accuracy  Akihiko USAMI :  1.0
+Accuracy  Genryuusai YAMAMOTO :  1.0
+Accuracy  Buggy :  1.0
+Accuracy  Shorter WONG :  1.0
+Accuracy  Akiko YOSANO :  1.0
+Accuracy  Shizune :  1.0
+Accuracy  Akito TAKAGI :  1.0
+Accuracy  Minami SHIMADA :  1.0
+Accuracy  Jessie :  1.0
+Accuracy  Vivi NEFERTARI :  1.0
+Accuracy  Kazuma YAGAMI :  1.0
+Accuracy  Keiichi MAEBARA :  1.0
+Accuracy  Mirio TOGATA :  1.0
+Accuracy  Taki TACHIBANA :  1.0
+Accuracy  Fuu KASUMI :  1.0
+Accuracy  Izayoi SAKAMAKI :  1.0
+Accuracy  Kobato HASEGAWA :  1.0
+Accuracy  Junpei HYUGA :  1.0
+Accuracy  Tamayo :  1.0
+Accuracy  Anri SONOHARA :  1.0
+Accuracy  Miku NAKANO :  1.0
+Accuracy  Akihito KANBARA :  1.0
+Accuracy  Madara UCHIHA :  1.0
+Accuracy  Yumichika AYASEGAWA :  1.0
+Accuracy  Yusuke URAMESHI :  1.0
+Accuracy  Akihisa YOSHII :  1.0
+Accuracy  Kukaku SHIBA :  1.0
+Accuracy  Aokiji :  1.0
+Accuracy  Ashitaka :  1.0
+Accuracy  Gou MATSUOKA :  1.0
+Accuracy  Sabo :  1.0
+Accuracy  Kanao TSUYURI :  1.0
+Accuracy  Beelzebub :  1.0
+Accuracy  Watari :  1.0
+Accuracy  Izumo KAMIKI :  1.0
+Accuracy  Jae-Ha :  1.0
+Accuracy  Gowther :  1.0
+Accuracy  Shuu OUMA :  1.0
+Accuracy  Hyakkimaru :  1.0
+Accuracy  Sheele :  1.0
+Accuracy  Daisuke KAMBE :  1.0
+Accuracy  Nene YASHIRO :  1.0
+Accuracy  Soma Asman GADAL :  1.0
+Accuracy  Kaede KAYANO :  1.0
+Accuracy  Atsushi OTANI :  1.0
+Accuracy  Tetsudou HISAKAWA :  1.0
+Accuracy  Ririchiyo SHIRAKIIN :  1.0
+Accuracy  Shuusei KAGARI :  1.0
+Accuracy  Neko :  1.0
+Accuracy  Yami SUKEHIRO :  1.0
+Accuracy  Panda :  1.0
+Accuracy  Jean Pierre POLNAREFF :  1.0
+Accuracy  Shion KARANOMORI :  1.0
+Accuracy  Mumen Rider :  1.0
+Accuracy  Aguero Agnis KHUN :  1.0
+Accuracy  Miku HATSUNE :  1.0
+Accuracy  Kobayashi :  1.0
+Accuracy  Goten SON :  1.0
+Accuracy  Germany :  1.0
+Accuracy  Nina TUCKER :  1.0
+Accuracy  Igneel :  1.0
+Accuracy  Sephiroth :  1.0
+Accuracy  Kisa SOHMA :  1.0
+Accuracy  Akira TAKIZAWA :  1.0
+Accuracy  Charles DUNOIS :  1.0
+Accuracy  Stocking :  1.0
+Accuracy  Himeko INABA :  1.0
+Accuracy  Rin KAGA :  1.0
+Accuracy  Yamato KUROSAWA :  1.0
+Accuracy  Hayato GOKUDERA :  1.0
+Accuracy  Sachi :  1.0
+Accuracy  Syo KURUSU :  1.0
+Accuracy  Kotori ITSUKA :  1.0
+Accuracy  Yuusaku KITAMURA :  1.0
+Accuracy  Marin KITAGAWA :  1.0
+Accuracy  Riko SUMINOE :  1.0
+Accuracy  Mitsuri KANROJI :  1.0
+Accuracy  Amaimon :  1.0
+Accuracy  Umetarou NOZAKI :  1.0
+Accuracy  Japan :  1.0
+Accuracy  Yozora MIKAZUKI :  1.0
+Accuracy  Illumi ZOLDYCK :  1.0
+Accuracy  Kouta TSUCHIYA :  1.0
+Accuracy  Bang :  1.0
+Accuracy  Renji YOMO :  1.0
+Accuracy  Susuwatari :  1.0
+Accuracy  Hildagarde :  1.0
+Accuracy  Aoi KUNIEDA :  1.0
+Accuracy  Ki-ja :  1.0
+Accuracy  Aikuro MIKISUGI :  1.0
+Accuracy  Gamatatsu :  1.0
+Accuracy  Seraphim :  1.0
+Accuracy  Shoko KOMI :  1.0
+Accuracy  Retsu UNOHANA :  1.0
+Accuracy  Index :  1.0
+Accuracy  Hanatarou YAMADA :  1.0
+Accuracy  Cherry blossom :  1.0
+Accuracy  Train HEARTNET :  1.0
+Accuracy  Team Rocket? Meowth :  1.0
+Accuracy  Mei TACHIBANA :  1.0
+Accuracy  Hiro :  1.0
+Accuracy  Dutch :  1.0
+Accuracy  Pinako ROCKBELL :  1.0
+Accuracy  Sanosuke SAGARA :  1.0
+Accuracy  Yuno :  1.0
+Accuracy  Walker YUMASAKI :  1.0
+Accuracy  Benimaru :  1.0
+Accuracy  Lau :  1.0
+Accuracy  Shinpachi SHIMURA :  1.0
+Accuracy  Josuke HIGASHIKATA :  1.0
+Accuracy  Senri SHIKI :  1.0
+Accuracy  Tia HARRIBEL :  1.0
+Accuracy  Inko :  1.0
+Accuracy  Junko ENOSHIMA :  1.0
+Accuracy  Jonathan JOESTAR :  1.0
+Accuracy  Senketsu :  1.0
+Accuracy  Twelve :  1.0
+Accuracy  Bell HYDRA :  1.0
+Accuracy  Chihiro FUJISAKI :  1.0
+Accuracy  Merlin :  1.0
+Accuracy  Noda :  1.0
+Accuracy  Gen ASAGIRI :  1.0
+Accuracy  Kou MINAMOTO :  1.0
+Accuracy  Sion :  1.0
+Accuracy  Irisviel VON EINZBERN :  1.0
+Accuracy  Ayase SHINOMIYA :  1.0
+Accuracy  Nanami AOYAMA :  1.0
+Accuracy  Raku ICHIJO :  1.0
+Accuracy  Takeshi YAMAMOTO :  1.0
+Accuracy  Karin KUROSAKI :  1.0
+Accuracy  Atsushi MURASAKIBARA :  1.0
+Accuracy  Rize KAMISHIRO :  1.0
+Accuracy  Airi KATAGIRI :  1.0
+Accuracy  Eiji NIZUMA :  1.0
+Accuracy  Vincent VALENTINE :  1.0
+Accuracy  Kaworu NAGISA :  1.0
+Accuracy  Suigetsu HOZUKI :  1.0
+Accuracy  Koga :  1.0
+Accuracy  Misaki YATA :  1.0
+Accuracy  Izuna HATSUSE :  1.0
+Accuracy  Marie MJOLNIR :  1.0
+Accuracy  Ganta IGARASHI :  1.0
+Accuracy  Syaoran LI :  1.0
+Accuracy  Rin :  1.0
+Accuracy  Kurama :  1.0
+Accuracy  Daikoku :  1.0
+Accuracy  Miya CHINEN :  1.0
+Accuracy  Ruka URUSHIBARA :  1.0
+Accuracy  Tsunayoshi SAWADA :  1.0
+Accuracy  Hawks :  1.0
+Accuracy  Ayato SAKAMAKI :  1.0
+Accuracy  Hajime IWAIZUMI :  1.0
+Accuracy  Bertholdt HOOVER :  1.0
+Accuracy  Kenya KOBAYASHI :  1.0
+Accuracy  Shinka NIBUTANI :  1.0
+Accuracy  Kumin TSUYURI :  1.0
+Accuracy  Sanae DEKOMORI :  1.0
+Accuracy  Wei Wuxian :  1.0
+Accuracy  Re-l MAYER :  1.0
+Accuracy  Nobuchika GINOZA :  1.0
+Accuracy  Misaki KAMIIGUSA :  1.0
+Accuracy  Luna :  1.0
+Accuracy  America :  1.0
+Accuracy  Ako SUMINOE :  1.0
+Accuracy  Tsukihi ARARAGI :  1.0
+Accuracy  Hirotaka NIFUJI :  1.0
+Accuracy  Krul TEPES :  1.0
+Accuracy  Reborn :  1.0
+Accuracy  Teletha TESTAROSSA :  1.0
+Accuracy  Shinra KUSAKABE :  1.0
+Accuracy  Ren TSURUGA :  1.0
+Accuracy  Keroberos :  1.0
+Accuracy  Subaru KONOE :  1.0
+Accuracy  Renge HOUSHAKUJI :  1.0
+Accuracy  Nona :  1.0
+Accuracy  Jeremiah GOTTWALD :  1.0
+Accuracy  Kyouka IZUMI :  1.0
+Accuracy  Lyon VASTIA :  1.0
+Accuracy  Midnight :  1.0
+Accuracy  Robert E. O. SPEEDWAGON :  1.0
+Accuracy  Ikumi MITO :  1.0
+Accuracy  Riko AIDA :  1.0
+Accuracy  England :  1.0
+Accuracy  Susanoo :  1.0
+Accuracy  Aoi HYOUDOU :  1.0
+Accuracy  Keiji AKAASHI :  1.0
+Accuracy  Firo PROCHAINEZO :  1.0
+Accuracy  Ryoji FUJIOKA :  1.0
+Accuracy  Shalltear BLOODFALLEN :  1.0
+Accuracy  Izuru KIRA :  1.0
+Accuracy  Puck :  1.0
+Accuracy  Kyubey :  1.0
+Accuracy  Hannes :  1.0
+Accuracy  Feitan PORTOR :  1.0
+Accuracy  Ryota SAKAMOTO :  1.0
+Accuracy  Nine :  1.0
+Accuracy  Sachiko FUJINUMA :  1.0
+Accuracy  Nymph :  1.0
+Accuracy  Nicolas BROWN :  1.0
+Accuracy  Elias AINSWORTH :  1.0
+Accuracy  Perona :  1.0
+Accuracy  Tornado of Terror :  1.0
+Accuracy  Cat Bus :  1.0
+Accuracy  Ur :  1.0
+Accuracy  Natsuki SHINOMIYA :  1.0
+Accuracy  Karuta ROROMIYA :  1.0
+Accuracy  Yun :  1.0
+Accuracy  Crocodile :  1.0
+Accuracy  Gluttony :  1.0
+Accuracy  Haruna :  1.0
+Accuracy  Sabito :  1.0
+Accuracy  Hanta SERO :  1.0
+Accuracy  Seishirou TSUGUMI :  1.0
+Accuracy  Misaki TAKAHASHI :  1.0
+Accuracy  Rei HINO :  1.0
+Accuracy  Miyuki TAKARA :  1.0
+Accuracy  Tyki MIKK :  1.0
+Accuracy  Black Rabbit :  1.0
+Accuracy  Moritaka MASHIRO :  1.0
+Accuracy  Enju AIHARA :  1.0
+Accuracy  Alice NAKIRI :  1.0
+Accuracy  Escanor :  1.0
+Accuracy  William T. SPEARS :  1.0
+Accuracy  Mizuki HIMEJI :  1.0
+Accuracy  Kite :  1.0
+Accuracy  Misaki NAKAHARA :  1.0
+Accuracy  Chise HATORI :  1.0
+Accuracy  Hiroomi NASE :  1.0
+Accuracy  Sei HANDA :  1.0
+Accuracy  Inko MIDORIYA :  1.0
+Accuracy  Present Mic :  1.0
+Accuracy  Satoshi ISSHIKI :  1.0
+Accuracy  Kaien CROSS :  1.0
+Accuracy  Aoi ASAHINA :  1.0
+Accuracy  Yuu KASHIMA :  1.0
+Accuracy  Laura BODEWIG :  1.0
+Accuracy  Najenda :  1.0
+Accuracy  Izumi AKAZAWA :  1.0
+Accuracy  Monokuma :  1.0
+Accuracy  Marian CROSS :  1.0
+Accuracy  Hagi :  1.0
+Accuracy  Kamui :  1.0
+Accuracy  Ryouko OOKAMI :  1.0
+Accuracy  Shikaku NARA :  1.0
+Accuracy  Mezo SHOJI :  1.0
+Accuracy  Botan :  1.0
+Accuracy  Russia :  1.0
+Accuracy  Tomonori :  1.0
+Accuracy  Hitoka YACHI :  1.0
+Accuracy  Sadaharu :  1.0
+Accuracy  Walter C. DORNEZ :  1.0
+Accuracy  Shino AMAKUSA :  1.0
+Accuracy  Byakuya TOGAMI :  1.0
+Accuracy  Neferpitou :  1.0
+Accuracy  Kenzo TENMA :  1.0
+Accuracy  Phil :  1.0
+Accuracy  Kimihiro WATANUKI :  1.0
+Accuracy  Yoh ASAKURA :  1.0
+Accuracy  Kaede AZUSAGAWA :  1.0
+Accuracy  Akira MADO :  1.0
+Accuracy  Makoto KINO :  1.0
+Accuracy  Mei SUNOHARA :  1.0
+Accuracy  Yuzuki SEO :  1.0
+Accuracy  Kyousuke KOUSAKA :  1.0
+Accuracy  Kamajii :  1.0
+Accuracy  Momo HINAMORI :  1.0
+Accuracy  Tsubaki SAWABE :  1.0
+Accuracy  Ururu TSUMUGIYA :  1.0
+Accuracy  Yuuki KONNO :  1.0
+Accuracy  Caesar ZEPPELI :  1.0
+Accuracy  Karin :  1.0
+Accuracy  Arisu MARESATO :  1.0
+Accuracy  Tifa LOCKHART :  1.0
+Accuracy  Shouko KIRISHIMA :  1.0
+Accuracy  Origami TOBIICHI :  1.0
+Accuracy  Houki SHINONONO :  1.0
+Accuracy  Touko FUKAWA :  1.0
+Accuracy  Mei HATSUME :  1.0
+Accuracy  Tatsuhiro SATO :  1.0
+Accuracy  Alexander ANDERSON :  1.0
+Accuracy  Cornelia LI BRITANNIA :  1.0
+Accuracy  Alluka ZOLDYCK :  1.0
+Accuracy  Takamatsu :  1.0
+Accuracy  Kohaku :  1.0
+Accuracy  Frieza :  1.0
+Accuracy  Chrome :  1.0
+Accuracy  Akira KOGAMI :  1.0
+Accuracy  Hikari HANAZONO :  1.0
+Accuracy  Kouta :  1.0
+Accuracy  Sakaki :  1.0
+Accuracy  Komugi :  1.0
+Accuracy  Sting EUCLIFFE :  1.0
+Accuracy  Kittan BACHIKA :  1.0
+Accuracy  Ami MIZUNO :  1.0
+Accuracy  Elicia HUGHES :  1.0
+Accuracy  Tet :  1.0
+Accuracy  Boota :  1.0
+Accuracy  Asako NATSUME :  1.0
+Accuracy  Jiji :  1.0
+Accuracy  Fay D. FLOURITE :  1.0
+Accuracy  Goblin Slayer :  1.0
+Accuracy  Rea SANKA :  1.0
+Accuracy  Tomohiro NAGATSUKA :  1.0
+Accuracy  Ranga :  1.0
+Accuracy  Casca :  1.0
+Accuracy  Natsuno YUUKI :  1.0
+Accuracy  Lancer :  1.0
+Accuracy  Lan Wangji :  1.0
+Accuracy  Seto KAIBA :  1.0
+Accuracy  Wave :  1.0
+Accuracy  Satoko HOUJOU :  1.0
+Accuracy  Ritsu :  1.0
+Accuracy  Nanachi :  1.0
+Accuracy  Den ROCKBELL :  1.0
+Accuracy  Yuga AOYAMA :  1.0
+Accuracy  Shizuka HIRATSUKA :  1.0
+Accuracy  Naru KOTOISHI :  1.0
+Accuracy  Kyoko HONDA :  1.0
+Accuracy  Makkachin :  1.0
+Accuracy  Shao May :  1.0
+Accuracy  Justin LAW :  1.0
+Accuracy  Rogue CHENEY :  1.0
+Accuracy  Sheska :  1.0
+Accuracy  Markl :  1.0
+Accuracy  Yuuko KANOE :  1.0
+Accuracy  Sig CURTIS :  1.0
+Accuracy  Isabella :  1.0
+Accuracy  Rio FUTABA :  1.0
+Accuracy  Yuji SAKAMOTO :  1.0
+Accuracy  Rika MINAMI :  1.0
+Accuracy  Ira GAMAGOORI :  1.0
+Accuracy  Himiko :  1.0
+Accuracy  Nagito KOMAEDA :  1.0
+Accuracy  Yushiro :  1.0
+Accuracy  Sorata KANDA :  1.0
+Accuracy  Minako AINO :  1.0
+Accuracy  Nonon JAKUZURE :  1.0
+Accuracy  Claire STANFIELD :  1.0
+Accuracy  Yuuto KIBA :  1.0
+Accuracy  Rentaro SATOMI :  1.0
+Accuracy  Noelle SILVA :  1.0
+Accuracy  Rohan KISHIBE :  1.0
+Accuracy  Rose THOMAS :  1.0
+Accuracy  Toshio OZAKI :  1.0
+Accuracy  Bols :  1.0
+Accuracy  Black Rock Shooter :  1.0
+Accuracy  Yoshino HIMEKAWA :  1.0
+Accuracy  Junichirou TANIZAKI :  1.0
+Accuracy  Miyuki SHIBA :  1.0
+Accuracy  Muichirou TOKITOU :  1.0
+Accuracy  Kurome :  1.0
+Accuracy  Maki OZE :  1.0
+Accuracy  Gol D Roger :  1.0
+Accuracy  Akihiko KAYABA :  1.0
+Accuracy  Momo Belia DEVILUKE :  1.0
+Accuracy  Sunako NAKAHARA :  1.0
+Accuracy  Bisca MULAN :  1.0
+Accuracy  Alzack CONNELL :  1.0
+Accuracy  Ranmao :  1.0
+Accuracy  Timcampy :  1.0
+Accuracy  Videl :  1.0
+Accuracy  Frau :  1.0
+Accuracy  Wanta :  1.0
+Accuracy  Tomomi MASAOKA :  1.0
+Accuracy  Emporio IVANKOV :  1.0
+Accuracy  Anna KUSHINA :  1.0
+Accuracy  Chifuyu MATSUNO :  1.0
+Accuracy  Nyanta :  1.0
+Accuracy  Lucoa :  1.0
+Accuracy  Wakatoshi USHIJIMA :  1.0
+Accuracy  Hana :  1.0
+Accuracy  Rika SHIGUMA :  1.0
+Accuracy  Elizabeth :  1.0
+Accuracy  Fafnir :  1.0
+Accuracy  Frosch :  1.0
+Accuracy  Arthur LEYWIN :  1.0
+Accuracy  Ayase ARAGAKI :  1.0
+Accuracy  Giorno GIOVANNA :  1.0
+Accuracy  Naotsugu :  1.0
+Accuracy  Ultear MILKOVICH :  1.0
+Accuracy  Junpei YOSHINO :  1.0
+Accuracy  Liliruca ARDE :  1.0
+Accuracy  Trisha ELRIC :  1.0
+Accuracy  Nemu KUROTSUCHI :  1.0
+Accuracy  Roberta :  1.0
+Accuracy  Naoya TESHIGAWARA :  1.0
+Accuracy  Akuto SAI :  1.0
+Accuracy  Ja'far :  1.0
+Accuracy  Matt :  1.0
+Accuracy  Nozomu ITOSHIKI :  1.0
+Accuracy  Saya OTONASHI :  1.0
+Accuracy  Bruno BUCCIARATI :  1.0
+Accuracy  Kirari MOMOBAMI :  1.0
+Accuracy  JOE :  1.0
+Accuracy  Wiz :  1.0
+Accuracy  Isao KONDO :  1.0
+Accuracy  Amu HINAMORI :  1.0
+Accuracy  Masayuki HORI :  1.0
+Accuracy  Kiki :  1.0
+Accuracy  Hajime NAGUMO :  1.0
+Accuracy  Milim NAVA :  1.0
+Accuracy  Junko HATTORI :  1.0
+Accuracy  Kodaka HASEGAWA :  1.0
+Accuracy  Hanako KOYANAGI :  1.0
+Accuracy  Bickslow :  1.0
+Accuracy  Tomoyo DAIDOUJI :  1.0
+Accuracy  Ooyama :  1.0
+Accuracy  Tsukiumi :  1.0
+Accuracy  Miia :  1.0
+Accuracy  Ragnarok :  1.0
+Accuracy  Nii :  1.0
+Accuracy  Mei TERUMI :  1.0
+Accuracy  Suzune HORIKITA :  1.0
+Accuracy  Kenji MIYAZAWA :  1.0
+Accuracy  Satori TENDOU :  1.0
+Accuracy  Yamada :  1.0
+Accuracy  Musubi :  1.0
+Accuracy  Pina :  1.0
+Accuracy  Carla JAEGER :  1.0
+Accuracy  Shion :  1.0
+Accuracy  Misae SAGARA :  1.0
+Accuracy  Takumi ALDINI :  1.0
+Accuracy  Milly ASHFORD :  1.0
+Accuracy  Tatsuki ARISAWA :  1.0
+Accuracy  Kikyo :  1.0
+Accuracy  Isaac NETERO :  1.0
+Accuracy  Felix ARGYLE :  1.0
+Accuracy  Mohammed AVDOL :  1.0
+Accuracy  Miles :  1.0
+Accuracy  Twenty-Fifth Bam :  1.0
+Accuracy  Kazunari TAKAO :  1.0
+Accuracy  Benimaru SHINMON :  1.0
+Accuracy  Kotonoha KATSURA :  1.0
+Accuracy  Fujimaki :  1.0
+Accuracy  Lucy ASHLEY :  1.0
+Accuracy  Riki NENDOU :  1.0
+Accuracy  Johan LIEBERT :  1.0
+Accuracy  Zeno :  1.0
+
+Evaluate model: Output/anime_full/c45/c45_anime_full_2024-06-04 18-05-28.pkl
+Test sample: Resources/anime_traits_better.csv
+Evaluation result:
+Total accuracy:  0.023986765922249794
+Accuracy  Hange ZOE :  1.0
+Accuracy  Shiro :  0.5
+Accuracy  Crona :  1.0
+Accuracy  Rimuru TEMPEST :  1.0
+Accuracy  Shura KIRIGAKURE :  1.0
+Accuracy  Migi :  1.0
+Accuracy  Mai SAKURAJIMA :  1.0
+Accuracy  Kyouko KIRIGIRI :  1.0
+Accuracy  Chuuya NAKAHARA :  1.0
+Accuracy  Biscuit KRUEGER :  1.0
+Accuracy  Nezumi :  1.0
+Accuracy  Kyoko MOGAMI :  1.0
+Accuracy  Bon KUREI :  1.0
+Accuracy  Gowther :  1.0
+Accuracy  Kobayashi :  1.0
+Accuracy  Cherry blossom :  1.0
+Accuracy  Senketsu :  1.0
+Accuracy  Nanami AOYAMA :  1.0
+Accuracy  Nona :  1.0
+Accuracy  Jeremiah GOTTWALD :  1.0
+Accuracy  Kyubey :  1.0
+Accuracy  Perona :  1.0
+Accuracy  Yuu KASHIMA :  1.0
+Accuracy  Karin :  1.0
+Accuracy  Den ROCKBELL :  1.0
+Accuracy  Rohan KISHIBE :  1.0
+Accuracy  Emporio IVANKOV :  1.0
+Accuracy  Frosch :  1.0
+Accuracy  Pina :  1.0
+

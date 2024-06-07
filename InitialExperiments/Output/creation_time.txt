@@ -1,0 +1,8 @@
+Resources/PlayTennis.csv -> ID3 -> 0.01748204231262207 s
+Resources/PlayTennis.csv -> C45 -> 0.0009992122650146484 s
+Resources/anime_25_classes_93_features.csv -> ID3 -> 2.602243185043335 s
+Resources/anime_25_classes_93_features.csv -> C45 -> 0.015759944915771484 s
+Resources/anime_82_classes_172_features.csv -> ID3 -> 26.984315633773804 s
+Resources/anime_82_classes_172_features.csv -> C45 -> 0.15770483016967773 s
+Resources/anime_traits_better.csv -> ID3 -> 3285.0743033885956 s
+Resources/anime_traits_better.csv -> C45 -> 83.28871464729309 s
