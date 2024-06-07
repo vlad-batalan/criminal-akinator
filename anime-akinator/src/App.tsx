@@ -1,24 +1,15 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { QuestionForm } from './components/forms/QuestionForm';
+import React from 'react';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Changed the text.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h1>Play Anime Akinator</h1>
+        <p> Think of an anime character and answer the questions:</p>
       </header>
+      <QuestionForm />
     </div>
   );
 }
