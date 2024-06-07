@@ -20,14 +20,16 @@ class DataRetrievalService:
 
         # Create query based on questions.
         # There might be items that do not contain the attribute. We do not want to exclude those.
+        # Also considers when an answer is provided as None, equivalent with unknown.
+        query = {}
         if questions:
             attribute_condition_list = [{'$or': create_attrib_condition(question.name, question.answer)} for question in
-                                        questions]
-            query = {'$and': attribute_condition_list}
-        else:
-            query = {}
+                                        questions if question.answer]
+            if attribute_condition_list:
+                query = {'$and': attribute_condition_list}
 
         # Projection will remove the attributes that were not provided.
+        # Attributes with unknown answer will also be excluded from projection.
         projection = {question.name: 0 for question in questions}
 
         print(f"Query the knowledge base: {query}, projecting by {projection}")

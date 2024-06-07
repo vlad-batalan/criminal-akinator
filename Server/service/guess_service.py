@@ -22,6 +22,9 @@ class GuessService:
         print(f"Retrieved {len(section)} instances.")
         print(f"End processing. Retrieving took: {end_time - start_time} seconds.")
 
+        if len(section) == 2:
+            print(section)
+
         # Treat the case when no character is returned.
         # TODO: Implement strategy to find out the wrong arguments.
         if not len(section):
