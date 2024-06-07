@@ -77,10 +77,18 @@ class FindQuestionService:
 
         print(f"Best feature is: {best_feature}")
 
+        # Treat the case when only one possible value is returned (two classes have the same attributes).
+        values = list(data[best_feature].unique())
+        if len(values) == 1:
+            print(f"Multiple classes have the same features: {list(data[self.target_field].values)}")
+            result = GuessOutput()
+            result.guess = data[self.target_field].mode().iloc[0]
+            return result
+
         # Return the result.
         result = GuessOutput()
         result.question = best_feature
-        result.values = list(data[best_feature].unique())
+        result.values = values
         return result
 
     def __preprocess_input(self, section: list[dict]):
@@ -91,6 +99,9 @@ class FindQuestionService:
         return data
 
     def __handle_guess_cases(self, data: DataFrame) -> str | None:
+        def unique_cols(df: DataFrame):
+            a = df.to_numpy()  # df.values (pandas<0.24)
+            return (a[0] == a).all(0)
         # If there is only one class or no features left, return the guess.
         # Is there a moment when no classes could be provided? Yes, clients can provide whatever selection.
         # - Treated in GuessService.
@@ -99,7 +110,9 @@ class FindQuestionService:
             return data[self.target_field].iloc[0]
 
         # If there are no feature left, return the majority class as guess.
-        if len(data.columns) == 1:
+        # or
+        # If there are multiple classes with the same features, return the majority.
+        if len(data.columns) == 1 or all(unique_cols(data.drop(self.target_field, axis=1))):
             return data[self.target_field].mode().iloc[0]
 
         return None

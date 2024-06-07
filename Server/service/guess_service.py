@@ -19,11 +19,8 @@ class GuessService:
         start_time = time.time()
         section = self.__get_knowledge_section(guess_input.questions)
         end_time = time.time()
-        print(f"Retrieved {len(section)} instances.")
         print(f"End processing. Retrieving took: {end_time - start_time} seconds.")
-
-        if len(section) == 2:
-            print(section)
+        print(f"Retrieved {len(section)} instances.")
 
         # Treat the case when no character is returned.
         # TODO: Implement strategy to find out the wrong arguments.
