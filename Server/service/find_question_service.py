@@ -52,7 +52,7 @@ class FindQuestionService:
 
     def __handle_guess_cases(self, data: DataFrame) -> str | None:
         # If there is only one class or no features left, return the guess.
-        # TODO: Is there a moment when no classes could be provided?
+        # TODO: Is there a moment when no classes could be provided? Yes, clients can provide whatever selection.
         # Find a way to treat that use-case.
         if len(data[self.target_field].unique()) == 1:
             return data[self.target_field].iloc[0]

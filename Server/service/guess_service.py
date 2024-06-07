@@ -1,6 +1,8 @@
 import time
 from collections import Counter
 
+import fastapi
+
 from model.dto.guess_model import GuessInput, GuessOutput, Question
 from service.data_retrieval_service import DataRetrievalService
 from service.find_question_service import FindQuestionService
@@ -20,6 +22,10 @@ class GuessService:
         print(f"Retrieved {len(section)} instances.")
         print(f"End processing. Retrieving took: {end_time - start_time} seconds.")
 
+        # Treat the case when no character is returned.
+        # TODO: Implement strategy to find out the wrong arguments.
+        if not len(section):
+            raise fastapi.HTTPException(status_code=404, detail="No character was found based on the provided answers!")
 
         # If maximum depth has been reached, return the majority class.
         if len(guess_input.questions) >= guess_input.max_depth:

@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Depends
+from fastapi import FastAPI
 
 from business.guess_business import post_guess_prediction
 from model.dto.guess_model import GuessInput, GuessOutput
