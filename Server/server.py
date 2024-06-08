@@ -1,12 +1,25 @@
 from __future__ import annotations
 
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 
 from business.guess_business import post_guess_prediction
 from model.dto.guess_model import GuessInput, GuessOutput
 from service.find_question_service import FindStrategy
 
+origins = [
+    "http://localhost:3000"
+]
+
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 @app.post("/guess")

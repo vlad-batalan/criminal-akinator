@@ -7,10 +7,6 @@ export interface RadioComponentProps {
 }
 
 export class RadioComponent extends React.Component<RadioComponentProps> {
-    constructor(props: RadioComponentProps) {
-        super(props);
-    }
-
     render(): React.ReactNode {
         return <div className="Form-item">
             <input type="radio" value={this.props.value} name={this.props.name} id={this.props.id} />

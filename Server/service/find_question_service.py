@@ -5,8 +5,8 @@ import math
 
 import C45
 import fastapi
-import pandas as pd
 from pandas import DataFrame
+
 from sklearn import preprocessing
 from sklearn.tree import DecisionTreeClassifier
 
