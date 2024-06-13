@@ -12,7 +12,7 @@ from sklearn import preprocessing
 from sklearn.tree import DecisionTreeClassifier
 
 from model.dto.guess_model import GuessOutput
-from service.strategy.strategies import FindStrategy, InformationGainQuestionStrategy
+from service.strategy.strategies import FindStrategy, InformationGainQuestionStrategy, GainRatioQuestionStrategy
 
 logger = logging.getLogger(__name__)
 
@@ -47,13 +47,18 @@ class FindQuestionService:
             evaluator = InformationGainQuestionStrategy()
             best_feature, __ = evaluator.find_best_feature(data, self.target_field)
         elif strategy == FindStrategy.C45_WIGHTED_GAIN_ALL_TREE:
-            c45_classifier = C45.C45Classifier()
-            data_features = data.drop(self.target_field, axis=1)
-            data_target = data[self.target_field]
+            evaluator = GainRatioQuestionStrategy()
+            best_feature, __ = evaluator.find_best_feature(data, self.target_field)
 
-            # TODO: It creates the whole tree, limit to only next row.
-            c45_classifier.fit(data_features, data_target)
-            best_feature = c45_classifier.tree.attribute
+            # Commented to try the other method.
+
+            # c45_classifier = C45.C45Classifier()
+            # data_features = data.drop(self.target_field, axis=1)
+            # data_target = data[self.target_field]
+            #
+            # # TODO: It creates the whole tree, limit to only next row.
+            # c45_classifier.fit(data_features, data_target)
+            # best_feature = c45_classifier.tree.attribute
         elif strategy == FindStrategy.CART:
             # Requires encoding the attribute values to int.
             df_encoded = data.copy(deep=True)
