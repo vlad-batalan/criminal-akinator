@@ -14,6 +14,15 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
+If the command does not work is due to an open issue, try setting an environment variable before.
+
+For Windows:
+`set NODE_OPTIONS=--openssl-legacy-provider`
+For Linux/Mac:
+`export NODE_OPTIONS=--openssl-legacy-provider`
+
+
+
 ### `npm test`
 
 Launches the test runner in the interactive watch mode.\
