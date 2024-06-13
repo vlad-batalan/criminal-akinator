@@ -3,6 +3,8 @@ import enum
 import math
 
 from pandas import DataFrame
+from sklearn import preprocessing
+from sklearn.tree import DecisionTreeClassifier
 
 
 class FindStrategy(enum.Enum):
@@ -120,12 +122,17 @@ class GainRatioQuestionStrategy(IFindBestQuestionStrategy):
                 # 2) Find out the entropy of the subset.
                 subset_entropy = self.__get_entropy(subset, subset_weights)
 
+                print(f"All weights: {weights}")
+                print(f"Subset weights: {subset_weights}")
+
                 # 3) Add findings to the feature entropy.
                 subset_probability = sum(subset_weights) / sum(weights)
                 feature_entropy += subset_probability * subset_entropy
 
                 # 4) Update the split info value based on the probability.
-                split_info -= subset_probability * math.log2(subset_probability)
+                # Treat also the case when probability is 0 for a subset.
+                if subset_probability != 0:
+                    split_info -= subset_probability * math.log2(subset_probability)
 
             # Calculate the information gain based on the attribute.
             gain = total_entropy - feature_entropy
@@ -182,3 +189,28 @@ class GainRatioQuestionStrategy(IFindBestQuestionStrategy):
                 split_weights.append(weights[i])
 
         return split_data, split_weights
+
+
+class GiniQuestionStrategy(IFindBestQuestionStrategy):
+
+    def __init__(self):
+        self.label_encoder = self.label_encoder = preprocessing.LabelEncoder()
+
+    def find_best_feature(self, data: DataFrame, target_feature: str) -> (str, list[str]):
+        # Using the decision tree classifier requires translating all the values to int.
+        df_encoded = data.copy(deep=True)
+        data_features = df_encoded.drop(target_feature, axis=1)
+        for column_name in data_features.columns:
+            if data_features[column_name].dtype == object:
+                data_features[column_name] = self.label_encoder.fit_transform(data_features[column_name])
+
+        data_target = data[target_feature]
+
+        d_tree = DecisionTreeClassifier(criterion='gini', max_depth=1)
+        d_tree.fit(data_features, data_target)
+
+        best_feature = data_features.columns[d_tree.tree_.feature[0]]
+        feature_values = data[best_feature].unique()
+
+        return best_feature, feature_values
+

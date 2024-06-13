@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import logging
-import threading
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
@@ -10,12 +9,12 @@ from business.guess_business import post_guess_prediction_anime, post_guess_pred
 from model.dto.guess_model import GuessInput, GuessOutput
 from service.find_question_service import FindStrategy
 
-
 origins = [
     "http://localhost:3000"
 ]
 
-logging.basicConfig(level=logging.INFO, filename='app.log', filemode='a', format='%(asctime)s - %(levelname)s - %(message)s')
+logging.basicConfig(level=logging.INFO, filename='app.log', filemode='a',
+                    format='%(asctime)s - %(levelname)s - %(message)s')
 app = FastAPI()
 
 app.add_middleware(
@@ -40,8 +39,8 @@ async def get_guess_anime(guess: GuessInput, strategy: str = "information_gain")
     return post_guess_prediction_anime(guess, find_strategy)
 
 
-@app.post("/guess/criminals")
-async def get_guess_criminals(guess: GuessInput, strategy: str = "id3"):
+@app.post("/guess/criminal")
+async def get_guess_criminals(guess: GuessInput, strategy: str = "information_gain"):
     find_strategy = FindStrategy.INFORMATION_GAIN
     if strategy == "information_gain":
         find_strategy = FindStrategy.INFORMATION_GAIN

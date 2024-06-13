@@ -13,6 +13,7 @@ export interface QuestionFormState {
     answerValues?: string[],
     question?: string,
     guess?: string
+    gameType: string
 }
 
 export const DONT_KNOW_VALUE = "Don't know";
@@ -29,20 +30,22 @@ export class QuestionForm extends React.Component<QuestionFormProps, QuestionFor
             strategy: "id3",
             answerValues: [],
             question: undefined,
-            guess: undefined
+            guess: undefined,
+            gameType: "anime"
         }
 
         this.resetGame = this.resetGame.bind(this);
         this.guess = this.guess.bind(this);
         this.handleStrategyChange = this.handleStrategyChange.bind(this);
         this.getCharacterImage = this.getCharacterImage.bind(this);
-        this.handleResetGame = this.handleResetGame.bind(this);
+        this.handleAnimeResetGame = this.handleAnimeResetGame.bind(this);
+        this.handleCriminalResetGame = this.handleCriminalResetGame.bind(this);
         this.handleFormSubmit = this.handleFormSubmit.bind(this);
     }
 
-    guess(input: GuessInput, strategy: string): void {
+    guess(input: GuessInput, gameType: string, strategy: string): void {
         console.log(`Get a guess for the following: ${JSON.stringify(input)}`);
-        this.apiClient._post(`guess/anime?strategy=${strategy}`, input)
+        this.apiClient._post(`guess/${gameType}?strategy=${strategy}`, input)
             .then(response => {
                 // Change state array.
                 const result: GuessOutput = response.data;
@@ -55,7 +58,7 @@ export class QuestionForm extends React.Component<QuestionFormProps, QuestionFor
             });
     }
 
-    resetGame(): void {
+    resetGame(gameType: string): void {
         // Reset question History.
         this.setState({ questionHistory: [] });
 
@@ -64,16 +67,23 @@ export class QuestionForm extends React.Component<QuestionFormProps, QuestionFor
         const guessInput = {
             questions: []
         } as GuessInput;
-        this.guess(guessInput, strategy);
+        this.guess(guessInput, gameType, strategy);
     }
 
     getCharacterImage(query: string): string {
-        return process.env.PUBLIC_URL + `/characters/${query}.png`;
+        return process.env.PUBLIC_URL + `/characters/${query}`;
     }
 
-    handleResetGame(event: MouseEvent) {
+    handleAnimeResetGame(event: MouseEvent) {
         event.preventDefault();
-        this.resetGame();
+        this.setState({gameType: "anime"});
+        this.resetGame("anime");
+    }
+
+    handleCriminalResetGame(event: MouseEvent) {
+        event.preventDefault();
+        this.setState({gameType: "criminal"});
+        this.resetGame("criminal");
     }
 
     handleStrategyChange(event: ChangeEvent<HTMLInputElement>) {
@@ -103,10 +113,11 @@ export class QuestionForm extends React.Component<QuestionFormProps, QuestionFor
             questions: updatedHistory
         };
 
+        const gameType = this.state.gameType;
         const strategy = this.state.strategy;
 
         // Call quess.
-        this.guess(guessInput, strategy);
+        this.guess(guessInput, gameType, strategy);
     }
 
 
@@ -131,7 +142,9 @@ export class QuestionForm extends React.Component<QuestionFormProps, QuestionFor
             questionValues =
                 <div>
                     {answerValues.map((value, index) => (
-                        <RadioComponent value={value} name={radioGroupName} id={`answer${index}`} key={`answer${index}`} />
+                        <div>
+                            {value && <RadioComponent value={value} name={radioGroupName} id={`answer${index}`} key={`answer${index}`} />}
+                        </div>
                     ))}
                 </div>
         }
@@ -162,8 +175,11 @@ export class QuestionForm extends React.Component<QuestionFormProps, QuestionFor
                     <input type="radio" value="gini_indicator" name="Strategy" id="strategy-gini" onChange={this.handleStrategyChange}/>
                     <label htmlFor="strategy-gini">Gini indicator</label>
                 </div>
-                <button className="Secondary-button" onClick={this.handleResetGame}>
-                    Start new game
+                <button className="Secondary-button" onClick={this.handleAnimeResetGame}>
+                    Start new Anime game
+                </button>
+                <button className="Secondary-button" onClick={this.handleCriminalResetGame}>
+                    Start new Criminal game
                 </button>
             </div>
 

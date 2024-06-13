@@ -12,12 +12,14 @@ logger = logging.getLogger(__name__)
 
 
 class GuessService:
-    def __init__(self, storage_service: DataRetrievalService, find_question_service: FindQuestionService, target_field: str):
+    def __init__(self, storage_service: DataRetrievalService, find_question_service: FindQuestionService,
+                 target_field: str):
         self.storage_service = storage_service
         self.find_question_service = find_question_service
         self.target_field = target_field
 
-    def predict_next_question(self, guess_input: GuessInput, strategy: FindStrategy = FindStrategy.GINI_INDICATOR) -> GuessOutput:
+    def predict_next_question(self, guess_input: GuessInput,
+                              strategy: FindStrategy = FindStrategy.INFORMATION_GAIN) -> GuessOutput:
         start_time = time.time()
         section = self.__get_knowledge_section(guess_input.questions)
         end_time = time.time()
