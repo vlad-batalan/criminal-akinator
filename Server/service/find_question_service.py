@@ -12,15 +12,9 @@ from sklearn import preprocessing
 from sklearn.tree import DecisionTreeClassifier
 
 from model.dto.guess_model import GuessOutput
+from service.strategy.strategies import FindStrategy, InformationGainQuestionStrategy
 
 logger = logging.getLogger(__name__)
-
-
-class FindStrategy(enum.Enum):
-    ID3_ENTROPY = 0
-    C45_WIGHTED_GAIN_ALL_TREE = 1
-    CART = 2
-
 
 def to_dataframe(section: list[dict]) -> DataFrame:
     return DataFrame(section)
@@ -49,9 +43,9 @@ class FindQuestionService:
             return result
 
         # Evaluate the best question.
-        features_list = list(data.drop(self.target_field, axis=1).columns)
         if strategy == FindStrategy.ID3_ENTROPY:
-            best_feature = max(features_list, key=lambda feature: self.__get_information_gain(data, feature))
+            evaluator = InformationGainQuestionStrategy()
+            best_feature, __ = evaluator.find_best_feature(data, self.target_field)
         elif strategy == FindStrategy.C45_WIGHTED_GAIN_ALL_TREE:
             c45_classifier = C45.C45Classifier()
             data_features = data.drop(self.target_field, axis=1)
