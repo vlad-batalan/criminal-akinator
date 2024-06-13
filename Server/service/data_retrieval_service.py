@@ -1,6 +1,9 @@
 import pymongo
+import logging
 
 from model.dto.guess_model import Question
+
+logger = logging.getLogger(__name__)
 
 
 class DataRetrievalService:
@@ -32,7 +35,8 @@ class DataRetrievalService:
         # Attributes with unknown answer will also be excluded from projection.
         projection = {question.name: 0 for question in questions}
 
-        print(f"Query the knowledge base: {query}, projecting by {projection}")
+        logger.info(f"Query the knowledge base: {query}")
+        logger.info(f"Projecting by: {projection}")
 
         return knowledge_collection.find(query, projection)
 

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import enum
+import logging
 import math
 
 import C45
@@ -11,6 +12,8 @@ from sklearn import preprocessing
 from sklearn.tree import DecisionTreeClassifier
 
 from model.dto.guess_model import GuessOutput
+
+logger = logging.getLogger(__name__)
 
 
 class FindStrategy(enum.Enum):
@@ -37,7 +40,6 @@ class FindQuestionService:
     def find_best_question(self, section: list[dict],
                            strategy: FindStrategy = FindStrategy.ID3_ENTROPY) -> GuessOutput:
         data = self.__preprocess_input(section)
-
         guess = self.__handle_guess_cases(data)
 
         # Return guess if one of the conditions matched.
@@ -75,12 +77,12 @@ class FindQuestionService:
         else:
             raise fastapi.HTTPException(500, "Unknown operation!")
 
-        print(f"Best feature is: {best_feature}")
+        logger.info(f"[Best][{strategy}]: {best_feature}")
 
         # Treat the case when only one possible value is returned (two classes have the same attributes).
         values = list(data[best_feature].unique())
         if len(values) == 1:
-            print(f"Multiple classes have the same features: {list(data[self.target_field].values)}")
+            logger.info(f"Classes with same feature: {list(data[self.target_field].values)}")
             result = GuessOutput()
             result.guess = data[self.target_field].mode().iloc[0]
             return result
@@ -102,6 +104,7 @@ class FindQuestionService:
         def unique_cols(df: DataFrame):
             a = df.to_numpy()  # df.values (pandas<0.24)
             return (a[0] == a).all(0)
+
         # If there is only one class or no features left, return the guess.
         # Is there a moment when no classes could be provided? Yes, clients can provide whatever selection.
         # - Treated in GuessService.

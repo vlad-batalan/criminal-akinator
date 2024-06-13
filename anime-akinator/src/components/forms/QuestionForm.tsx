@@ -4,7 +4,8 @@ import ApiClient from "../../api/ApiClient";
 import { GuessInput, GuessOutput, Question } from "../../api/model/GuessModel";
 
 export interface QuestionFormProps {
-    apiClient: ApiClient
+    apiClient: ApiClient,
+    endpoint: string
 }
 
 export interface QuestionFormState {
@@ -39,7 +40,7 @@ export class QuestionForm extends React.Component<QuestionFormProps, QuestionFor
 
     guess(input: GuessInput): void {
         console.log(`Get a guess for the following: ${JSON.stringify(input)}`);
-        this.apiClient._post('guess?strategy=cart', input)
+        this.apiClient._post('guess/anime?strategy=cart', input)
             .then(response => {
                 // Change state array.
                 const result: GuessOutput = response.data;

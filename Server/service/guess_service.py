@@ -2,11 +2,13 @@ import time
 from collections import Counter
 
 import fastapi
+import logging
 
 from model.dto.guess_model import GuessInput, GuessOutput, Question
 from service.data_retrieval_service import DataRetrievalService
 from service.find_question_service import FindQuestionService, FindStrategy
 
+logger = logging.getLogger(__name__)
 
 class GuessService:
     def __init__(self, data_retrieval_service: DataRetrievalService, find_question_service: FindQuestionService):
@@ -15,12 +17,11 @@ class GuessService:
         self.target_field = find_question_service.target_field
 
     def predict_next_question(self, guess_input: GuessInput, strategy: FindStrategy = FindStrategy.CART) -> GuessOutput:
-        print(f"Retrieve section based on questions...")
         start_time = time.time()
         section = self.__get_knowledge_section(guess_input.questions)
         end_time = time.time()
-        print(f"End processing. Retrieving took: {end_time - start_time} seconds.")
-        print(f"Retrieved {len(section)} instances.")
+        logger.info(f"[RetrieveTime]: {end_time - start_time} seconds")
+        logger.info(f"[RetrieveInstances]: {len(section)}")
 
         # Treat the case when no character is returned.
         # TODO: Implement strategy to find out the wrong arguments.
@@ -34,11 +35,11 @@ class GuessService:
             result.guess = majority_class
             return result
 
-        print(f"Processing: {guess_input.questions}...")
+        logger.info(f"[Question]: {guess_input.questions}")
         start_time = time.time()
         result = self.find_question_service.find_best_question(section, strategy)
         end_time = time.time()
-        print(f"End processing. Evaluation took: {end_time - start_time} seconds.")
+        logger.info(f"[BestQuestionTime][{strategy}]: {end_time - start_time} seconds.")
 
         return result
 

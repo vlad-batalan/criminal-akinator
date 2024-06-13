@@ -13,5 +13,4 @@ export class RadioComponent extends React.Component<RadioComponentProps> {
             <label htmlFor={this.props.id}>{this.props.value}</label>
         </div>
     }
-
 }
