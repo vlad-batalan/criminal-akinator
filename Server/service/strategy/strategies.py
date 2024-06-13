@@ -6,9 +6,9 @@ from pandas import DataFrame
 
 
 class FindStrategy(enum.Enum):
-    ID3_ENTROPY = 0
-    C45_WIGHTED_GAIN_ALL_TREE = 1
-    CART = 2
+    INFORMATION_GAIN = 0
+    GAIN_RATIO = 1
+    GINI_INDICATOR = 2
 
 
 class IFindBestQuestionStrategy(metaclass=abc.ABCMeta):

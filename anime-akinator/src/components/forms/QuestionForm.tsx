@@ -1,15 +1,15 @@
-import React, { FormEvent, MouseEvent } from "react"
+import React, { ChangeEvent, FormEvent, MouseEvent } from "react"
 import { RadioComponent } from "./input/RadioComponent";
 import ApiClient from "../../api/ApiClient";
 import { GuessInput, GuessOutput, Question } from "../../api/model/GuessModel";
 
 export interface QuestionFormProps {
-    apiClient: ApiClient,
-    endpoint: string
+    apiClient: ApiClient
 }
 
 export interface QuestionFormState {
     questionHistory: Question[],
+    strategy: string,
     answerValues?: string[],
     question?: string,
     guess?: string
@@ -26,6 +26,7 @@ export class QuestionForm extends React.Component<QuestionFormProps, QuestionFor
 
         this.state = {
             questionHistory: [],
+            strategy: "id3",
             answerValues: [],
             question: undefined,
             guess: undefined
@@ -33,14 +34,15 @@ export class QuestionForm extends React.Component<QuestionFormProps, QuestionFor
 
         this.resetGame = this.resetGame.bind(this);
         this.guess = this.guess.bind(this);
+        this.handleStrategyChange = this.handleStrategyChange.bind(this);
         this.getCharacterImage = this.getCharacterImage.bind(this);
         this.handleResetGame = this.handleResetGame.bind(this);
         this.handleFormSubmit = this.handleFormSubmit.bind(this);
     }
 
-    guess(input: GuessInput): void {
+    guess(input: GuessInput, strategy: string): void {
         console.log(`Get a guess for the following: ${JSON.stringify(input)}`);
-        this.apiClient._post('guess/anime?strategy=cart', input)
+        this.apiClient._post(`guess/anime?strategy=${strategy}`, input)
             .then(response => {
                 // Change state array.
                 const result: GuessOutput = response.data;
@@ -57,10 +59,12 @@ export class QuestionForm extends React.Component<QuestionFormProps, QuestionFor
         // Reset question History.
         this.setState({ questionHistory: [] });
 
+        const strategy = this.state.strategy;
+
         const guessInput = {
             questions: []
         } as GuessInput;
-        this.guess(guessInput);
+        this.guess(guessInput, strategy);
     }
 
     getCharacterImage(query: string): string {
@@ -70,6 +74,12 @@ export class QuestionForm extends React.Component<QuestionFormProps, QuestionFor
     handleResetGame(event: MouseEvent) {
         event.preventDefault();
         this.resetGame();
+    }
+
+    handleStrategyChange(event: ChangeEvent<HTMLInputElement>) {
+        if (event.target.checked) {
+            this.setState({strategy: event.target.value});
+        }
     }
 
     handleFormSubmit(event: FormEvent) {
@@ -93,8 +103,10 @@ export class QuestionForm extends React.Component<QuestionFormProps, QuestionFor
             questions: updatedHistory
         };
 
+        const strategy = this.state.strategy;
+
         // Call quess.
-        this.guess(guessInput);
+        this.guess(guessInput, strategy);
     }
 
 
@@ -137,14 +149,25 @@ export class QuestionForm extends React.Component<QuestionFormProps, QuestionFor
 
         return <div>
             <div>
+                <h3> Use the following question strategy: </h3>
+                <div className="Form-item">
+                    <input type="radio" value="information_gain" name="Strategy" id="strategy-info-gain" onChange={this.handleStrategyChange} defaultChecked={true}/>
+                    <label htmlFor="strategy-info-gain">Information Gain</label>
+                </div>
+                <div className="Form-item">
+                    <input type="radio" value="gain_ratio" name="Strategy" id="strategy-gain-ratio" onChange={this.handleStrategyChange}/>
+                    <label htmlFor="strategy-gain-ratio">Gain Ratio</label>
+                </div>
+                <div className="Form-item">
+                    <input type="radio" value="gini_indicator" name="Strategy" id="strategy-gini" onChange={this.handleStrategyChange}/>
+                    <label htmlFor="strategy-gini">Gini indicator</label>
+                </div>
                 <button className="Secondary-button" onClick={this.handleResetGame}>
                     Start new game
                 </button>
             </div>
 
             {guessDiv}
-
-
 
             {question}
             <form onSubmit={this.handleFormSubmit}>

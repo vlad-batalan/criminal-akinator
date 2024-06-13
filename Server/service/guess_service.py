@@ -10,13 +10,14 @@ from service.find_question_service import FindQuestionService, FindStrategy
 
 logger = logging.getLogger(__name__)
 
-class GuessService:
-    def __init__(self, data_retrieval_service: DataRetrievalService, find_question_service: FindQuestionService):
-        self.data_retrieval_service = data_retrieval_service
-        self.find_question_service = find_question_service
-        self.target_field = find_question_service.target_field
 
-    def predict_next_question(self, guess_input: GuessInput, strategy: FindStrategy = FindStrategy.CART) -> GuessOutput:
+class GuessService:
+    def __init__(self, storage_service: DataRetrievalService, find_question_service: FindQuestionService, target_field: str):
+        self.storage_service = storage_service
+        self.find_question_service = find_question_service
+        self.target_field = target_field
+
+    def predict_next_question(self, guess_input: GuessInput, strategy: FindStrategy = FindStrategy.GINI_INDICATOR) -> GuessOutput:
         start_time = time.time()
         section = self.__get_knowledge_section(guess_input.questions)
         end_time = time.time()
@@ -37,7 +38,7 @@ class GuessService:
 
         logger.info(f"[Question]: {guess_input.questions}")
         start_time = time.time()
-        result = self.find_question_service.find_best_question(section, strategy)
+        result = self.find_question_service.find_best_question(section, self.target_field, strategy)
         end_time = time.time()
         logger.info(f"[BestQuestionTime][{strategy}]: {end_time - start_time} seconds.")
 
@@ -50,7 +51,7 @@ class GuessService:
             were not provided.
         """
 
-        return list(self.data_retrieval_service.get_knowledge_section(attributes))
+        return list(self.storage_service.get_knowledge_section(attributes))
 
     def __get_majority(self, section: list[dict]) -> (int, str):
         """
@@ -68,4 +69,4 @@ class GuessService:
         return len(most_common), value
 
     def __get_attribute_values(self, attribute) -> list[str]:
-        return self.data_retrieval_service.get_attribute_values(attribute)
+        return self.storage_service.get_attribute_values(attribute)
