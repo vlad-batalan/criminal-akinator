@@ -14,9 +14,11 @@ anime_target_field = anime_storage_service.get_target_field()
 anime_guess_service = GuessService(anime_storage_service, find_question_service, anime_target_field)
 
 # 2) Criminal face storage.
-criminal_storage_service = DataRetrievalService(connection_str='mongodb+srv://akinator-app-user:TLx0HVl9rzyEoors'
-                                                               '@criminalprofiles.c90w7vc.mongodb.net/?retryWrites=true'
-                                                               '&w=majority&appName=CriminalProfiles',
+credentials = "mongodb://localhost:27017/"
+with open("resources/MongoCreds.txt", "r") as file:
+     credentials = file.readline()
+
+criminal_storage_service = DataRetrievalService(connection_str=credentials,
                                                 database_name="CriminalAkinatorDB")
 criminal_target_field = criminal_storage_service.get_target_field()
 criminal_guess_service = GuessService(criminal_storage_service, find_question_service, criminal_target_field)
