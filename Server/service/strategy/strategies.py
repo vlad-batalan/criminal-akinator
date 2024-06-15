@@ -50,14 +50,14 @@ class InformationGainQuestionStrategy(IFindBestQuestionStrategy):
         features_list = list(filter(lambda feature: feature != target_feature, data.columns))
 
         # Get best feature.
-        best_feature = max(features_list, key=lambda feature: self.__get_information_gain(data, feature))
+        best_feature = max(features_list, key=lambda feature: self.__get_information_gain(data, feature, target_feature))
 
         # Enlist the next values that best feature can take.
         feature_values = list(filter(check_not_null_nan, data[best_feature].unique()))
 
         return best_feature, feature_values
 
-    def __get_information_gain(self, data: DataFrame, feature: str) -> float:
+    def __get_information_gain(self, data: DataFrame, feature: str, target_feature: str) -> float:
         # Filter data for only known attribute values.
         filtered_data = data[(data[feature] == data[feature])]
 
@@ -68,10 +68,10 @@ class InformationGainQuestionStrategy(IFindBestQuestionStrategy):
         for value in unique_values:
             subset = filtered_data[filtered_data[feature] == value]
             proportion = len(subset) / len(filtered_data)
-            weighted_entropy += proportion * self.__get_entropy(subset, feature)
+            weighted_entropy += proportion * self.__get_entropy(subset, target_feature)
 
         # Calculate information gain
-        entropy_outcome = self.__get_entropy(filtered_data, feature)
+        entropy_outcome = self.__get_entropy(filtered_data, target_feature)
         information_gain = entropy_outcome - weighted_entropy
 
         return information_gain
@@ -224,7 +224,7 @@ class GiniQuestionStrategy(IFindBestQuestionStrategy):
         features_list = list(filter(lambda feature: feature != target_feature, data.columns))
 
         # Get best feature.
-        best_feature = min(features_list, key=lambda feature: self.__weighted_gini(data, feature))
+        best_feature = min(features_list, key=lambda feature: self.__weighted_gini(data, feature, target_feature))
 
         # Enlist the next values that best feature can take.
         feature_values = list(filter(check_not_null_nan, data[best_feature].unique()))
@@ -245,19 +245,18 @@ class GiniQuestionStrategy(IFindBestQuestionStrategy):
 
         return 1 - gini_impurity
 
-    def __weighted_gini(self, data: DataFrame, feature) -> float:
+    def __weighted_gini(self, data: DataFrame, feature: str, target_feature: str) -> float:
         # Filter data for only known attribute values.
         filtered_data = data[(data[feature] == data[feature])]
 
         # Calculate weighted average gini impurity indicator for the feature.
         unique_values = filtered_data[feature].unique()
-        weighted_gini = 0
+        weighted_gini = 0.0
 
-        # TODO: Treat the case for unknown values.
         for value in unique_values:
             subset = filtered_data[filtered_data[feature] == value]
             proportion = len(subset) / len(filtered_data)
-            weighted_gini += proportion * self.__gini_impurity(subset, feature)
+            weighted_gini += proportion * self.__gini_impurity(subset, target_feature)
 
         return weighted_gini
 
