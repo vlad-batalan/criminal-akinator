@@ -2,6 +2,7 @@ import abc
 import enum
 import math
 
+import numpy as np
 from pandas import DataFrame
 from sklearn import preprocessing
 from sklearn.tree import DecisionTreeClassifier
@@ -11,6 +12,16 @@ class FindStrategy(enum.Enum):
     INFORMATION_GAIN = 0
     GAIN_RATIO = 1
     GINI_IMPURITY = 2
+
+
+def check_not_null_nan(value):
+    """
+    Method responsible for checking if a value is not null or none.
+    For the nan check, it is enough to verify if value == value.
+    :param value: str or int of float
+    :return: boolean value
+    """
+    return value and value == value
 
 
 class IFindBestQuestionStrategy(metaclass=abc.ABCMeta):
@@ -24,6 +35,10 @@ class IFindBestQuestionStrategy(metaclass=abc.ABCMeta):
         :return: tuple of:
             - str: the name of the best feature (can be the target feature if there is a solution)
             - list[str]: the possible unique values a solution can have (is empty if a guess is provided)
+            or, in the case when a guess can be made, a tuple of:
+            - nan
+            - nan
+
         """
         pass
 
@@ -95,14 +110,14 @@ class GainRatioQuestionStrategy(IFindBestQuestionStrategy):
 
         # Build first layer of c45 tree.
         best_feature = self.__calculate(entries, features_list, weights)
-        feature_values = data[best_feature].unique()
+        # Select only not null attributes to show.
+        feature_values = None
+        if best_feature:
+            feature_values = list(filter(check_not_null_nan, data[best_feature].unique()))
 
         return best_feature, feature_values
 
     def __calculate(self, entries: list[list], feature_list: list[str], weights: list[float]) -> str:
-        # Find out the total entropy of the set.
-        total_entropy = self.__get_entropy(entries, weights)
-
         # Initialize important indices.
         best_attribute = None
         best_gain_ratio = 0.0
@@ -111,21 +126,23 @@ class GainRatioQuestionStrategy(IFindBestQuestionStrategy):
         # Loop through each feature.
         # It assumes that it does not contain the target column.
         for feature_index in range(len(feature_list)):
+            # Filter the elements that have a defined value for the attributes.
+            filtered_entries_weights = list(
+                filter(lambda entry_weight: check_not_null_nan(entry_weight[0][feature_index]), zip(entries, weights)))
+            filtered_entries = list(map(lambda item: item[0], filtered_entries_weights))
+            filtered_weights = list(map(lambda item: item[1], filtered_entries_weights))
+
             # Gets the unique values of the feature.
-            feature_values = set([record[feature_index] for record in entries])
+            feature_values = set([record[feature_index] for record in filtered_entries])
             feature_entropy = 0.0
 
             # For each distinct value of the feature.
             for value in feature_values:
-                # TODO: Treat the case for unknown values.
                 # 1) Get the subset of the entries which have the current value.
-                subset, subset_weights = self.__split_data(entries, feature_index, value, weights)
+                subset, subset_weights = self.__split_data(filtered_entries, feature_index, value, filtered_weights)
 
                 # 2) Find out the entropy of the subset.
                 subset_entropy = self.__get_entropy(subset, subset_weights)
-
-                print(f"All weights: {weights}")
-                print(f"Subset weights: {subset_weights}")
 
                 # 3) Add findings to the feature entropy.
                 subset_probability = sum(subset_weights) / sum(weights)
@@ -136,6 +153,9 @@ class GainRatioQuestionStrategy(IFindBestQuestionStrategy):
                 if subset_probability != 0:
                     split_info -= subset_probability * math.log2(subset_probability)
 
+            # Find out the total entropy of the set excluding unknown values.
+            total_entropy = self.__get_entropy(filtered_entries, filtered_weights)
+
             # Calculate the information gain based on the attribute.
             gain = total_entropy - feature_entropy
 
@@ -144,7 +164,6 @@ class GainRatioQuestionStrategy(IFindBestQuestionStrategy):
             if split_info != 0.0:
                 gain_ratio = gain / split_info
 
-            # Get the maximum gain ration.
             if gain_ratio > best_gain_ratio:
                 best_gain_ratio = gain_ratio
                 best_attribute = feature_list[feature_index]
@@ -171,14 +190,14 @@ class GainRatioQuestionStrategy(IFindBestQuestionStrategy):
         # Evaluates entropy.
         entropy = 0.0
         # For each result class, use the weight to find out entropy.
-        # TODO: Is there possible to be classes with 0 counts?
         for count in class_counts.values():
             probability = count / total_weight
             entropy -= probability * math.log2(probability)
 
         return entropy
 
-    def __split_data(self, entries: list[list], feature_index: int, feature_value: str, weights: list[float]):
+    def __split_data(self, entries: list[list], feature_index: int, feature_value: str, weights: list[float]) -> (
+            list[list], list[float]):
         split_data = []
         split_weights = []
 
@@ -209,8 +228,6 @@ class GiniQuestionStrategy(IFindBestQuestionStrategy):
         feature_values = list(data[best_feature].unique())
 
         return best_feature, feature_values
-
-
 
     def __gini_impurity(self, data: DataFrame, target_feature: str) -> float:
         total_rows = len(data)

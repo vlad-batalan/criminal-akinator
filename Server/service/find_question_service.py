@@ -66,12 +66,9 @@ class FindQuestionService(IFindQuestionService):
         logger.info(f"[Best][{strategy}][Feature]: {best_feature}")
         logger.info(f"[Best][{strategy}][Values]: {feature_values}")
 
-        print(f"[Best][{strategy}][Feature]: {best_feature}")
-        print(f"[Best][{strategy}][Values]: {feature_values}")
-
         # Treat the case when only one possible value is returned (two classes have the same attributes).
-        if len(feature_values) == 1:
-            logger.info(f"Classes with same feature: {list(data[target_field].values)}")
+        if not feature_values or len(feature_values) == 1:
+            logger.info(f"Classes with same feature: {set(data[target_field].values)}")
             result = GuessOutput()
             result.guess = data[target_field].mode().iloc[0]
             return result
