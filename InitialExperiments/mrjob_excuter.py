@@ -4,7 +4,7 @@ import uuid
 
 import pandas as pd
 
-from info_gain_map_reduce import MRJobCounter
+from info_gain_map_reduce import InfoGainMapReducer
 
 if __name__ == "__main__":
     dataset_path = "Resources/CriminalAkinatorDB.knowledge.csv"
@@ -18,7 +18,7 @@ if __name__ == "__main__":
     end_time = time.time()
     print(f"Writing to disk: {end_time - start_time} seconds.")
 
-    mr_job = MRJobCounter(args=[tmp_mrjob_input_path, "--target", "ProfileId"])
+    mr_job = InfoGainMapReducer(args=[tmp_mrjob_input_path, "--target", "ProfileId"])
     with mr_job.make_runner() as runner:
         start_time = time.time()
         runner.run()

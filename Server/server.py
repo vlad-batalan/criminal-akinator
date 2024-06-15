@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import logging
 
+import fastapi
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -25,28 +26,27 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+strategy_map = {
+    "information_gain": FindStrategy.INFORMATION_GAIN,
+    "gini_impurity": FindStrategy.GINI_IMPURITY,
+    "gain_ratio": FindStrategy.GAIN_RATIO,
+    "mr_information_gain": FindStrategy.INFORMATION_GAIN_MR
+}
+
 
 @app.post("/guess/anime")
 async def get_guess_anime(guess: GuessInput, strategy: str = "information_gain") -> GuessOutput:
-    find_strategy = FindStrategy.INFORMATION_GAIN
-    if strategy == "information_gain":
-        find_strategy = FindStrategy.INFORMATION_GAIN
-    elif strategy == "gini_impurity":
-        find_strategy = FindStrategy.GINI_IMPURITY
-    elif strategy == "gain_ratio":
-        find_strategy = FindStrategy.GAIN_RATIO
-
-    return post_guess_prediction_anime(guess, find_strategy)
+    if strategy in strategy_map:
+        find_strategy = strategy_map[strategy]
+        return post_guess_prediction_anime(guess, find_strategy)
+    else:
+        raise fastapi.HTTPException(status_code=400, detail=f"Not supported strategy: {strategy}")
 
 
 @app.post("/guess/criminal")
 async def get_guess_criminals(guess: GuessInput, strategy: str = "information_gain"):
-    find_strategy = FindStrategy.INFORMATION_GAIN
-    if strategy == "information_gain":
-        find_strategy = FindStrategy.INFORMATION_GAIN
-    elif strategy == "gini_impurity":
-        find_strategy = FindStrategy.GINI_IMPURITY
-    elif strategy == "gain_ratio":
-        find_strategy = FindStrategy.GAIN_RATIO
-
-    return post_guess_prediction_criminals(guess, find_strategy)
+    if strategy in strategy_map:
+        find_strategy = strategy_map[strategy]
+        return post_guess_prediction_criminals(guess, find_strategy)
+    else:
+        raise fastapi.HTTPException(status_code=400, detail=f"Not supported strategy: {strategy}")

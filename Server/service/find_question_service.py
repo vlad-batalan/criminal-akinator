@@ -6,11 +6,10 @@ import fastapi
 from pandas import DataFrame
 
 from sklearn import preprocessing
-from sklearn.tree import DecisionTreeClassifier
 
 from model.dto.guess_model import GuessOutput
 from service.strategy.strategies import FindStrategy, InformationGainQuestionStrategy, GainRatioQuestionStrategy, \
-    GiniQuestionStrategy
+    GiniQuestionStrategy, InformationGainMRQuestionStrategy
 
 logger = logging.getLogger(__name__)
 
@@ -36,6 +35,12 @@ class FindQuestionService(IFindQuestionService):
 
     def __init__(self):
         self.label_encoder = preprocessing.LabelEncoder()
+        self.evaluator_list = [
+            InformationGainQuestionStrategy(),
+            GainRatioQuestionStrategy(),
+            GiniQuestionStrategy(),
+            InformationGainMRQuestionStrategy()
+        ]
 
     def find_best_question(self, section: list[dict], target_field: str,
                            strategy: FindStrategy = FindStrategy.INFORMATION_GAIN) -> GuessOutput:
@@ -48,20 +53,18 @@ class FindQuestionService(IFindQuestionService):
             result.guess = guess
             return result
 
-        # Evaluate the best question.
-        if strategy == FindStrategy.INFORMATION_GAIN:
-            evaluator = InformationGainQuestionStrategy()
-            best_feature, feature_values = evaluator.find_best_feature(data, target_field)
+        # Get the strategy based on input.
+        evaluator = None
+        for item in self.evaluator_list:
+            if item.get_strategy_type() == strategy:
+                evaluator = item
+                break
 
-        elif strategy == FindStrategy.GAIN_RATIO:
-            evaluator = GainRatioQuestionStrategy()
-            best_feature, feature_values = evaluator.find_best_feature(data, target_field)
-
-        elif strategy == FindStrategy.GINI_IMPURITY:
-            evaluator = GiniQuestionStrategy()
-            best_feature, feature_values = evaluator.find_best_feature(data, target_field)
-        else:
+        # No evaluator was found.
+        if evaluator is None:
             raise fastapi.HTTPException(500, "Unknown operation!")
+
+        best_feature, feature_values = evaluator.find_best_feature(data, target_field)
 
         logger.info(f"[Best][{strategy}][Feature]: {best_feature}")
         logger.info(f"[Best][{strategy}][Values]: {feature_values}")

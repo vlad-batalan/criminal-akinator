@@ -1,16 +1,27 @@
 import abc
 import enum
+import logging
 import math
+import os
+import time
+import uuid
 
 from pandas import DataFrame
 from sklearn import preprocessing
 from sklearn.tree import DecisionTreeClassifier
+
+from service.mr.query_finder_jobs import InfoGainMapReducer
+
+logger = logging.getLogger(__name__)
 
 
 class FindStrategy(enum.Enum):
     INFORMATION_GAIN = 0
     GAIN_RATIO = 1
     GINI_IMPURITY = 2
+    INFORMATION_GAIN_MR = 3
+    GAIN_RATIO_MR = 4
+    GINI_IMPURITY_MR = 5
 
 
 def check_not_null_nan(value):
@@ -25,6 +36,10 @@ def check_not_null_nan(value):
 
 
 class IFindBestQuestionStrategy(metaclass=abc.ABCMeta):
+
+    @abc.abstractmethod
+    def get_strategy_type(self) -> FindStrategy:
+        pass
 
     @abc.abstractmethod
     def find_best_feature(self, data: DataFrame, target_feature: str) -> (str, list[str]):
@@ -44,6 +59,9 @@ class IFindBestQuestionStrategy(metaclass=abc.ABCMeta):
 
 
 class InformationGainQuestionStrategy(IFindBestQuestionStrategy):
+
+    def get_strategy_type(self) -> FindStrategy:
+        return FindStrategy.INFORMATION_GAIN
 
     def find_best_feature(self, data: DataFrame, target_feature: str) -> (str, list[str]):
         # Get the list of column names resembling the features.
@@ -94,6 +112,9 @@ class InformationGainQuestionStrategy(IFindBestQuestionStrategy):
 
 
 class GainRatioQuestionStrategy(IFindBestQuestionStrategy):
+
+    def get_strategy_type(self) -> FindStrategy:
+        return FindStrategy.GAIN_RATIO
 
     def find_best_feature(self, data: DataFrame, target_feature: str) -> (str, list[str]):
         # Algorithm takes the last column as target feature.
@@ -216,6 +237,9 @@ class GainRatioQuestionStrategy(IFindBestQuestionStrategy):
 
 class GiniQuestionStrategy(IFindBestQuestionStrategy):
 
+    def get_strategy_type(self) -> FindStrategy:
+        return FindStrategy.GINI_IMPURITY
+
     def __init__(self):
         self.label_encoder = self.label_encoder = preprocessing.LabelEncoder()
 
@@ -277,3 +301,39 @@ class GiniQuestionStrategy(IFindBestQuestionStrategy):
         feature_values = data[best_feature].unique()
 
         return best_feature, feature_values
+
+
+class InformationGainMRQuestionStrategy(IFindBestQuestionStrategy):
+
+    def get_strategy_type(self) -> FindStrategy:
+        return FindStrategy.INFORMATION_GAIN_MR
+
+    def find_best_feature(self, data: DataFrame, target_feature: str) -> (str, list[str]):
+        # Put the data on disk as temp file.
+        tmp_file_path = "tmp/" + str(uuid.uuid4()) + ".csv"
+        start_time = time.time()
+        data.to_csv(tmp_file_path, index=False)
+        end_time = time.time()
+
+        logging.info(f"[{self.get_strategy_type()}][SaveFileTime]: {end_time - start_time} seconds.")
+
+        try:
+            # Initialize job.
+            mr_job = InfoGainMapReducer(args=[tmp_file_path, "--target", target_feature])
+            with mr_job.make_runner() as runner:
+                start_time = time.time()
+                runner.run()
+                end_time = time.time()
+
+                logging.info(f"[{self.get_strategy_type()}][MapReduceTime]: {end_time - start_time} seconds.")
+
+                # Get the result as a single element.
+                outputs = list(mr_job.parse_output(runner.cat_output()))
+
+                best_feature, __ = outputs[0]
+                best_feature_Values = list(filter(check_not_null_nan, data[best_feature].unique()))
+                return best_feature, best_feature_Values
+        finally:
+            # Delete the created file on disk.
+            os.remove(tmp_file_path)
+

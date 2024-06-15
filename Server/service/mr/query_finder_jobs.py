@@ -1,3 +1,4 @@
+import abc
 import math
 
 import pandas as pd
@@ -5,10 +6,9 @@ from mrjob.job import MRJob
 from mrjob.step import MRStep
 
 
-class InfoGainMapReducer(MRJob):
-
+class IQuestionMapReducer(MRJob, metaclass=abc.ABCMeta):
     def configure_args(self):
-        super(InfoGainMapReducer, self).configure_args()
+        super(IQuestionMapReducer, self).configure_args()
         self.add_passthru_arg("-t", "--target", help="Define the target column for the question extraction.")
 
     def read_csv_data_mapper_raw(self, input_path, input_uri):
@@ -24,6 +24,11 @@ class InfoGainMapReducer(MRJob):
 
     def reducer_count(self, tuple_attr_type_val, count):
         yield tuple_attr_type_val, sum(count)
+
+
+class InfoGainMapReducer(IQuestionMapReducer):
+    def configure_args(self):
+        super(InfoGainMapReducer, self).configure_args()
 
     def mapper_count_per_attribute_per_value(self, tuple_attr_val_target, count):
         attribute_name, attribute_val, target_val = tuple_attr_val_target
@@ -77,7 +82,6 @@ class InfoGainMapReducer(MRJob):
 
         yield best_attrib, best_gain
 
-
     def steps(self):
         return [
             # Step 1: Read the data as a csv, returns:
@@ -100,7 +104,3 @@ class InfoGainMapReducer(MRJob):
             MRStep(mapper=self.mapper_all,
                    reducer=self.reducer_result),
         ]
-
-
-if __name__ == "__main__":
-    InfoGainMapReducer.run()

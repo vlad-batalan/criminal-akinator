@@ -175,6 +175,10 @@ export class QuestionForm extends React.Component<QuestionFormProps, QuestionFor
                     <input type="radio" value="gini_impurity" name="Strategy" id="strategy-gini" onChange={this.handleStrategyChange}/>
                     <label htmlFor="strategy-gini">Gini Impurity</label>
                 </div>
+                <div className="Form-item">
+                    <input type="radio" value="mr_information_gain" name="Strategy" id="strategy-mr-info-gain" onChange={this.handleStrategyChange}/>
+                    <label htmlFor="strategy-mr-info-gain">MapReduce: Information Gain</label>
+                </div>
                 <button className="Secondary-button" onClick={this.handleAnimeResetGame}>
                     Start new Anime game
                 </button>
