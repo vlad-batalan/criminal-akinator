@@ -31,8 +31,8 @@ async def get_guess_anime(guess: GuessInput, strategy: str = "information_gain")
     find_strategy = FindStrategy.INFORMATION_GAIN
     if strategy == "information_gain":
         find_strategy = FindStrategy.INFORMATION_GAIN
-    elif strategy == "gini_indicator":
-        find_strategy = FindStrategy.GINI_INDICATOR
+    elif strategy == "gini_impurity":
+        find_strategy = FindStrategy.GINI_IMPURITY
     elif strategy == "gain_ratio":
         find_strategy = FindStrategy.GAIN_RATIO
 
@@ -44,8 +44,8 @@ async def get_guess_criminals(guess: GuessInput, strategy: str = "information_ga
     find_strategy = FindStrategy.INFORMATION_GAIN
     if strategy == "information_gain":
         find_strategy = FindStrategy.INFORMATION_GAIN
-    elif strategy == "gini_indicator":
-        find_strategy = FindStrategy.GINI_INDICATOR
+    elif strategy == "gini_impurity":
+        find_strategy = FindStrategy.GINI_IMPURITY
     elif strategy == "gain_ratio":
         find_strategy = FindStrategy.GAIN_RATIO
 

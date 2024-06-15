@@ -10,7 +10,7 @@ from sklearn.tree import DecisionTreeClassifier
 class FindStrategy(enum.Enum):
     INFORMATION_GAIN = 0
     GAIN_RATIO = 1
-    GINI_INDICATOR = 2
+    GINI_IMPURITY = 2
 
 
 class IFindBestQuestionStrategy(metaclass=abc.ABCMeta):
@@ -48,6 +48,7 @@ class InformationGainQuestionStrategy(IFindBestQuestionStrategy):
         weighted_entropy = 0
 
         for value in unique_values:
+            # TODO: Treat the case for unknown values.
             subset = data[data[feature] == value]
             proportion = len(subset) / len(data)
             weighted_entropy += proportion * self.__get_entropy(subset, feature)
@@ -116,6 +117,7 @@ class GainRatioQuestionStrategy(IFindBestQuestionStrategy):
 
             # For each distinct value of the feature.
             for value in feature_values:
+                # TODO: Treat the case for unknown values.
                 # 1) Get the subset of the entries which have the current value.
                 subset, subset_weights = self.__split_data(entries, feature_index, value, weights)
 
@@ -197,6 +199,47 @@ class GiniQuestionStrategy(IFindBestQuestionStrategy):
         self.label_encoder = self.label_encoder = preprocessing.LabelEncoder()
 
     def find_best_feature(self, data: DataFrame, target_feature: str) -> (str, list[str]):
+        # Get the list of column names resembling the features.
+        features_list = list(filter(lambda feature: feature != target_feature, data.columns))
+
+        # Get best feature.
+        best_feature = min(features_list, key=lambda feature: self.__weighted_gini(data, feature))
+
+        # Enlist the next values that best feature can take.
+        feature_values = list(data[best_feature].unique())
+
+        return best_feature, feature_values
+
+
+
+    def __gini_impurity(self, data: DataFrame, target_feature: str) -> float:
+        total_rows = len(data)
+        target_values = data[target_feature].unique()
+
+        gini_impurity = 0
+        for value in target_values:
+            # Calculate the proportion of instances with the current value
+            value_count = len(data[data[target_feature] == value])
+            proportion = value_count / total_rows
+
+            gini_impurity += proportion * proportion
+
+        return 1 - gini_impurity
+
+    def __weighted_gini(self, data: DataFrame, feature) -> float:
+        # Calculate weighted average gini impurity indicator for the feature.
+        unique_values = data[feature].unique()
+        weighted_gini = 0
+
+        # TODO: Treat the case for unknown values.
+        for value in unique_values:
+            subset = data[data[feature] == value]
+            proportion = len(subset) / len(data)
+            weighted_gini += proportion * self.__gini_impurity(subset, feature)
+
+        return weighted_gini
+
+    def __evaluate_using_tree(self, data: DataFrame, target_feature: str) -> (str, list[str]):
         # Using the decision tree classifier requires translating all the values to int.
         df_encoded = data.copy(deep=True)
         data_features = df_encoded.drop(target_feature, axis=1)
@@ -213,4 +256,3 @@ class GiniQuestionStrategy(IFindBestQuestionStrategy):
         feature_values = data[best_feature].unique()
 
         return best_feature, feature_values
-

@@ -172,8 +172,8 @@ export class QuestionForm extends React.Component<QuestionFormProps, QuestionFor
                     <label htmlFor="strategy-gain-ratio">Gain Ratio</label>
                 </div>
                 <div className="Form-item">
-                    <input type="radio" value="gini_indicator" name="Strategy" id="strategy-gini" onChange={this.handleStrategyChange}/>
-                    <label htmlFor="strategy-gini">Gini indicator</label>
+                    <input type="radio" value="gini_impurity" name="Strategy" id="strategy-gini" onChange={this.handleStrategyChange}/>
+                    <label htmlFor="strategy-gini">Gini Impurity</label>
                 </div>
                 <button className="Secondary-button" onClick={this.handleAnimeResetGame}>
                     Start new Anime game

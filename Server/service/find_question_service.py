@@ -57,13 +57,17 @@ class FindQuestionService(IFindQuestionService):
             evaluator = GainRatioQuestionStrategy()
             best_feature, feature_values = evaluator.find_best_feature(data, target_field)
 
-        elif strategy == FindStrategy.GINI_INDICATOR:
+        elif strategy == FindStrategy.GINI_IMPURITY:
             evaluator = GiniQuestionStrategy()
             best_feature, feature_values = evaluator.find_best_feature(data, target_field)
         else:
             raise fastapi.HTTPException(500, "Unknown operation!")
 
-        logger.info(f"[Best][{strategy}]: {best_feature}")
+        logger.info(f"[Best][{strategy}][Feature]: {best_feature}")
+        logger.info(f"[Best][{strategy}][Values]: {feature_values}")
+
+        print(f"[Best][{strategy}][Feature]: {best_feature}")
+        print(f"[Best][{strategy}][Values]: {feature_values}")
 
         # Treat the case when only one possible value is returned (two classes have the same attributes).
         if len(feature_values) == 1:
