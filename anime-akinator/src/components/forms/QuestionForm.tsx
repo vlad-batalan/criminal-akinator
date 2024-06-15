@@ -142,8 +142,8 @@ export class QuestionForm extends React.Component<QuestionFormProps, QuestionFor
             questionValues =
                 <div>
                     {answerValues.map((value, index) => (
-                        <div>
-                            {value && <RadioComponent value={value} name={radioGroupName} id={`answer${index}`} key={`answer${index}`} />}
+                        <div key={`answer${index}`} >
+                            {value && <RadioComponent value={value} name={radioGroupName} id={`answer${index}`}/>}
                         </div>
                     ))}
                 </div>
@@ -178,6 +178,10 @@ export class QuestionForm extends React.Component<QuestionFormProps, QuestionFor
                 <div className="Form-item">
                     <input type="radio" value="mr_information_gain" name="Strategy" id="strategy-mr-info-gain" onChange={this.handleStrategyChange}/>
                     <label htmlFor="strategy-mr-info-gain">MapReduce: Information Gain</label>
+                </div>
+                <div className="Form-item">
+                    <input type="radio" value="mr_gini_impurity" name="Strategy" id="strategy-mr-gini-impurity" onChange={this.handleStrategyChange}/>
+                    <label htmlFor="strategy-mr-gini-impurity">MapReduce: Gini Impurity</label>
                 </div>
                 <button className="Secondary-button" onClick={this.handleAnimeResetGame}>
                     Start new Anime game

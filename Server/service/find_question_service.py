@@ -9,7 +9,7 @@ from sklearn import preprocessing
 
 from model.dto.guess_model import GuessOutput
 from service.strategy.strategies import FindStrategy, InformationGainQuestionStrategy, GainRatioQuestionStrategy, \
-    GiniQuestionStrategy, InformationGainMRQuestionStrategy
+    GiniQuestionStrategy, InformationGainMRQuestionStrategy, GiniMRQuestionStrategy
 
 logger = logging.getLogger(__name__)
 
@@ -39,7 +39,8 @@ class FindQuestionService(IFindQuestionService):
             InformationGainQuestionStrategy(),
             GainRatioQuestionStrategy(),
             GiniQuestionStrategy(),
-            InformationGainMRQuestionStrategy()
+            InformationGainMRQuestionStrategy(),
+            GiniMRQuestionStrategy()
         ]
 
     def find_best_question(self, section: list[dict], target_field: str,

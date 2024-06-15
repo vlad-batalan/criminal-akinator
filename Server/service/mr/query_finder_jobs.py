@@ -104,3 +104,81 @@ class InfoGainMapReducer(IQuestionMapReducer):
             MRStep(mapper=self.mapper_all,
                    reducer=self.reducer_result),
         ]
+
+
+class GiniMapReducer(IQuestionMapReducer):
+    def configure_args(self):
+        super(GiniMapReducer, self).configure_args()
+
+    def mapper_count_per_attribute_per_value(self, tuple_attr_val_target, count):
+        attribute_name, attribute_val, target_val = tuple_attr_val_target
+        yield (attribute_name, attribute_val), (target_val, count)
+
+    def reducer_gini_per_attribute_per_value(self, tuple_name_val, tuple_target_count):
+        count_values = list(map(lambda x: x[1], tuple_target_count))
+        total_count = sum(count_values)
+        gini_impurity = 0.0
+
+        for count in count_values:
+            probability = count / total_count
+            gini_impurity += probability * probability
+
+        gini = 1 - gini_impurity
+
+        yield tuple_name_val, {"count": total_count, "gini": gini}
+
+    def mapper_gini_per_attribute(self, tuple_name_val, prop):
+        attribute_name, attribute_value = tuple_name_val
+        yield attribute_name, prop
+
+    def reducer_gini_per_attribute(self, attribute_name, props):
+        # Total number of entries.
+        total_count = 0
+        results = list(props)
+
+        # Get total number of values.
+        for attribute_value_prop in results:
+            total_count += attribute_value_prop["count"]
+
+        weighted_gini = 0.0
+        for attribute_value_prop in results:
+            weight = attribute_value_prop["count"] / total_count
+            weighted_gini += weight * attribute_value_prop["gini"]
+
+        yield attribute_name, weighted_gini
+
+    def mapper_all(self, attribute_name, weighted_gini):
+        yield None, (attribute_name, weighted_gini)
+
+    def reducer_result(self, __, tuple_attr_gini):
+        best_gini = 1.0
+        best_attrib = None
+        for attribute_name, gini in tuple_attr_gini:
+            if gini <= best_gini:
+                best_gini = gini
+                best_attrib = attribute_name
+
+        yield best_attrib, best_gini
+
+    def steps(self):
+        return [
+            # Step 1: Read the data as a csv, returns:
+            # {key: column_name, value: ([str] as attr_values, [str] as target_values)
+            MRStep(mapper_raw=self.read_csv_data_mapper_raw),
+
+            # Step 2: Count all, count per attribute, count per attribute and value.
+            MRStep(mapper=self.mapper_split_count,
+                   reducer=self.reducer_count),
+
+            # # Step 3: Calculate gini impurity per attribute per attribute value.
+            MRStep(mapper=self.mapper_count_per_attribute_per_value,
+                   reducer=self.reducer_gini_per_attribute_per_value),
+            #
+            # # Step 4: Calculate gini per attribute.
+            MRStep(mapper=self.mapper_gini_per_attribute,
+                   reducer=self.reducer_gini_per_attribute),
+
+            # # Step 5: Get the best attribute.
+            MRStep(mapper=self.mapper_all,
+                   reducer=self.reducer_result),
+        ]

@@ -6,11 +6,12 @@ import os
 import time
 import uuid
 
+from mrjob.job import MRJob
 from pandas import DataFrame
 from sklearn import preprocessing
 from sklearn.tree import DecisionTreeClassifier
 
-from service.mr.query_finder_jobs import InfoGainMapReducer
+from service.mr.query_finder_jobs import InfoGainMapReducer, GiniMapReducer
 
 logger = logging.getLogger(__name__)
 
@@ -68,7 +69,8 @@ class InformationGainQuestionStrategy(IFindBestQuestionStrategy):
         features_list = list(filter(lambda feature: feature != target_feature, data.columns))
 
         # Get best feature.
-        best_feature = max(features_list, key=lambda feature: self.__get_information_gain(data, feature, target_feature))
+        best_feature = max(features_list,
+                           key=lambda feature: self.__get_information_gain(data, feature, target_feature))
 
         # Enlist the next values that best feature can take.
         feature_values = list(filter(check_not_null_nan, data[best_feature].unique()))
@@ -303,23 +305,30 @@ class GiniQuestionStrategy(IFindBestQuestionStrategy):
         return best_feature, feature_values
 
 
-class InformationGainMRQuestionStrategy(IFindBestQuestionStrategy):
+class IMRJobQuestionStrategy(IFindBestQuestionStrategy, metaclass=abc.ABCMeta):
 
-    def get_strategy_type(self) -> FindStrategy:
-        return FindStrategy.INFORMATION_GAIN_MR
+    @abc.abstractmethod
+    def init_runner(self, input_file_path, target) -> MRJob:
+        pass
 
-    def find_best_feature(self, data: DataFrame, target_feature: str) -> (str, list[str]):
-        # Put the data on disk as temp file.
-        tmp_file_path = "tmp/" + str(uuid.uuid4()) + ".csv"
+    def generate_tmp_input_path(self) -> str:
+        return "tmp/" + str(uuid.uuid4()) + ".csv"
+
+    def clean_data(self, data: DataFrame) -> DataFrame:
+        if "_id" in data.columns:
+            return data.drop("_id", axis=1)
+        return data
+
+    def save_input_to_file(self, input_file_path: str, data: DataFrame):
         start_time = time.time()
-        data.to_csv(tmp_file_path, index=False)
+        data.to_csv(input_file_path, index=False)
         end_time = time.time()
-
         logging.info(f"[{self.get_strategy_type()}][SaveFileTime]: {end_time - start_time} seconds.")
 
+    def run_job(self, input_file_path: str, data: DataFrame, target_feature: str) -> (str, list[str]):
         try:
             # Initialize job.
-            mr_job = InfoGainMapReducer(args=[tmp_file_path, "--target", target_feature])
+            mr_job = self.init_runner(input_file_path, target_feature)
             with mr_job.make_runner() as runner:
                 start_time = time.time()
                 runner.run()
@@ -331,9 +340,39 @@ class InformationGainMRQuestionStrategy(IFindBestQuestionStrategy):
                 outputs = list(mr_job.parse_output(runner.cat_output()))
 
                 best_feature, __ = outputs[0]
-                best_feature_Values = list(filter(check_not_null_nan, data[best_feature].unique()))
-                return best_feature, best_feature_Values
+                best_feature_values = list(filter(check_not_null_nan, data[best_feature].unique()))
+                return best_feature, best_feature_values
         finally:
             # Delete the created file on disk.
-            os.remove(tmp_file_path)
+            os.remove(input_file_path)
 
+    def find_best_feature(self, data: DataFrame, target_feature: str) -> (str, list[str]):
+        # Clean data.
+        data = self.clean_data(data)
+
+        # Get tmp file path.
+        input_tmp_file_path = self.generate_tmp_input_path()
+
+        # Save on disk.
+        self.save_input_to_file(input_tmp_file_path, data)
+
+        # Perform prediction. Also deletes the input file when ready.
+        return self.run_job(input_tmp_file_path, data, target_feature)
+
+
+class InformationGainMRQuestionStrategy(IMRJobQuestionStrategy):
+
+    def get_strategy_type(self) -> FindStrategy:
+        return FindStrategy.INFORMATION_GAIN_MR
+
+    def init_runner(self, input_file_path, target_feature) -> MRJob:
+        return InfoGainMapReducer(args=[input_file_path, "--target", target_feature])
+
+
+class GiniMRQuestionStrategy(IMRJobQuestionStrategy):
+
+    def get_strategy_type(self) -> FindStrategy:
+        return FindStrategy.GINI_IMPURITY_MR
+
+    def init_runner(self, input_file_path, target_feature) -> MRJob:
+        return GiniMapReducer(args=[input_file_path, "--target", target_feature])
