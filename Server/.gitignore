@@ -186,3 +186,4 @@ fabric.properties
 
 # Credentials
 resources/MongoCreds.txt
+resources/credentials.json
