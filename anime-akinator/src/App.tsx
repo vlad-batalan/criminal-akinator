@@ -11,8 +11,8 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Play Anime Akinator</h1>
-        <p> Think of an anime character and answer the questions:</p>
+        <h1>Akinator for forinsics</h1>
+        <p> You play the role of a witness. Please answer the questions to find out who is the criminal:</p>
       </header>
       <QuestionPage apiClient={apiClient} />
     </div>

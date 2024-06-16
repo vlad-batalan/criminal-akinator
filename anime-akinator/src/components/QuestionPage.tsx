@@ -86,6 +86,11 @@ export class QuestionPage extends React.Component<QuestionFormProps, QuestionPag
 
                 // If a guess is provided, set the image link also.
                 if (result.guess) {
+                    // Remove the question details.
+                    this.setState({
+                        questionMetadata: []
+                    });
+
                     const category = (this.state.gameType === "anime" ? "1" : "0");
                     this.apiClient._get(`media/${result.guess}?category=${category}`)
                         .then(response => {
