@@ -95,7 +95,6 @@ class InformationGainQuestionStrategy(IFindBestQuestionStrategy):
         entropy_outcome = self.__get_entropy(filtered_data, target_feature)
         information_gain = entropy_outcome - weighted_entropy
 
-        print(f"Feature: {feature}, Information Gain: {information_gain}")
         return information_gain
 
     def __get_entropy(self, data: DataFrame, target_feature: str) -> float:

@@ -1,6 +1,6 @@
 import './App.css';
 import ApiClient from './api/ApiClient';
-import { QuestionForm } from './components/forms/QuestionForm';
+import { QuestionPage } from './components/forms/QuestionPage';
 import React from 'react';
 
 function App() {
@@ -14,7 +14,7 @@ function App() {
         <h1>Play Anime Akinator</h1>
         <p> Think of an anime character and answer the questions:</p>
       </header>
-      <QuestionForm apiClient={apiClient}/>
+      <QuestionPage apiClient={apiClient} />
     </div>
   );
 }

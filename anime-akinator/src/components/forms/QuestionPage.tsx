@@ -7,7 +7,7 @@ export interface QuestionFormProps {
     apiClient: ApiClient
 }
 
-export interface QuestionFormState {
+export interface QuestionPageState {
     questionHistory: Question[],
     strategy: string,
     answerValues?: string[],
@@ -19,7 +19,7 @@ export interface QuestionFormState {
 
 export const DONT_KNOW_VALUE = "Don't know";
 
-export class QuestionForm extends React.Component<QuestionFormProps, QuestionFormState> {
+export class QuestionPage extends React.Component<QuestionFormProps, QuestionPageState> {
     readonly apiClient: ApiClient;
 
     constructor(props: QuestionFormProps) {
@@ -28,7 +28,7 @@ export class QuestionForm extends React.Component<QuestionFormProps, QuestionFor
 
         this.state = {
             questionHistory: [],
-            strategy: "id3",
+            strategy: "information_gain",
             answerValues: [],
             question: undefined,
             guess: undefined,
@@ -64,7 +64,7 @@ export class QuestionForm extends React.Component<QuestionFormProps, QuestionFor
                         .then(response => {
                             // ToDo: Check files are provided.
                             console.log(`Response from GET media/${result.guess}?category=${category}: ${JSON.stringify(response.data)}`)
-                            this.setState({guessImageUrl: response.data["files"][0]["thumbnailLink"]});
+                            this.setState({ guessImageUrl: response.data["files"][0]["thumbnailLink"] });
                         })
                 }
             });
@@ -75,7 +75,7 @@ export class QuestionForm extends React.Component<QuestionFormProps, QuestionFor
         this.setState({ questionHistory: [] });
 
         const strategy = this.state.strategy;
-        this.setState({guessImageUrl: undefined});
+        this.setState({ guessImageUrl: undefined });
 
         const guessInput = {
             questions: []
@@ -85,19 +85,19 @@ export class QuestionForm extends React.Component<QuestionFormProps, QuestionFor
 
     handleAnimeResetGame(event: MouseEvent) {
         event.preventDefault();
-        this.setState({gameType: "anime"});
+        this.setState({ gameType: "anime" });
         this.resetGame("anime");
     }
 
     handleCriminalResetGame(event: MouseEvent) {
         event.preventDefault();
-        this.setState({gameType: "criminal"});
+        this.setState({ gameType: "criminal" });
         this.resetGame("criminal");
     }
 
     handleStrategyChange(event: ChangeEvent<HTMLInputElement>) {
         if (event.target.checked) {
-            this.setState({strategy: event.target.value});
+            this.setState({ strategy: event.target.value });
         }
     }
 
@@ -152,7 +152,7 @@ export class QuestionForm extends React.Component<QuestionFormProps, QuestionFor
                 <div>
                     {answerValues.map((value, index) => (
                         <div key={`answer${index}`} >
-                            {value && <RadioComponent value={value} name={radioGroupName} id={`answer${index}`}/>}
+                            {value && <RadioComponent value={value} name={radioGroupName} id={`answer${index}`} />}
                         </div>
                     ))}
                 </div>
@@ -163,57 +163,64 @@ export class QuestionForm extends React.Component<QuestionFormProps, QuestionFor
             const imageUrl = this.state.guessImageUrl;
 
             guessDiv = <div>
-                <p>My guess for you is: {this.state.guess}</p>
+                <h3>My guess for you is: {this.state.guess}</h3>
                 <img src={imageUrl} alt={this.state.guess}/>
             </div>
         }
 
 
         return <div>
-            <div>
+            <div className="LeftContent">
+                <div>
+                    <button className="Secondary-button" onClick={this.handleAnimeResetGame}>
+                        Start new Anime game
+                    </button>
+                </div>
+                <div>
+                    <button className="Secondary-button" onClick={this.handleCriminalResetGame}>
+                        Start new Criminal game
+                    </button>
+                </div>
                 <h3> Use the following question strategy: </h3>
                 <div className="Form-item">
-                    <input type="radio" value="information_gain" name="Strategy" id="strategy-info-gain" onChange={this.handleStrategyChange} defaultChecked={true}/>
+                    <input type="radio" value="information_gain" name="Strategy" id="strategy-info-gain" onChange={this.handleStrategyChange} defaultChecked={true} />
                     <label htmlFor="strategy-info-gain">Information Gain</label>
                 </div>
                 <div className="Form-item">
-                    <input type="radio" value="gain_ratio" name="Strategy" id="strategy-gain-ratio" onChange={this.handleStrategyChange}/>
+                    <input type="radio" value="gain_ratio" name="Strategy" id="strategy-gain-ratio" onChange={this.handleStrategyChange} />
                     <label htmlFor="strategy-gain-ratio">Gain Ratio</label>
                 </div>
                 <div className="Form-item">
-                    <input type="radio" value="gini_impurity" name="Strategy" id="strategy-gini" onChange={this.handleStrategyChange}/>
+                    <input type="radio" value="gini_impurity" name="Strategy" id="strategy-gini" onChange={this.handleStrategyChange} />
                     <label htmlFor="strategy-gini">Gini Impurity</label>
                 </div>
                 <div className="Form-item">
-                    <input type="radio" value="mr_information_gain" name="Strategy" id="strategy-mr-info-gain" onChange={this.handleStrategyChange}/>
+                    <input type="radio" value="mr_information_gain" name="Strategy" id="strategy-mr-info-gain" onChange={this.handleStrategyChange} />
                     <label htmlFor="strategy-mr-info-gain">MapReduce: Information Gain</label>
                 </div>
                 <div className="Form-item">
-                    <input type="radio" value="mr_gini_impurity" name="Strategy" id="strategy-mr-gini-impurity" onChange={this.handleStrategyChange}/>
+                    <input type="radio" value="mr_gini_impurity" name="Strategy" id="strategy-mr-gini-impurity" onChange={this.handleStrategyChange} />
                     <label htmlFor="strategy-mr-gini-impurity">MapReduce: Gini Impurity</label>
                 </div>
                 <div className="Form-item">
-                    <input type="radio" value="mr_gain_ratio" name="Strategy" id="strategy-mr-gain-ratio" onChange={this.handleStrategyChange}/>
+                    <input type="radio" value="mr_gain_ratio" name="Strategy" id="strategy-mr-gain-ratio" onChange={this.handleStrategyChange} />
                     <label htmlFor="strategy-mr-gain-ratio">MapReduce: Gain Ratio</label>
                 </div>
-                <button className="Secondary-button" onClick={this.handleAnimeResetGame}>
-                    Start new Anime game
-                </button>
-                <button className="Secondary-button" onClick={this.handleCriminalResetGame}>
-                    Start new Criminal game
-                </button>
             </div>
-
-            {guessDiv}
-
-            {question}
-            <form onSubmit={this.handleFormSubmit}>
-                {questionValues}
-                {questionValues &&
-                    <div className="Form-item">
-                        <button type="submit" className="Primary-button" name="GuessNextBtn">Try to guess!</button>
-                    </div>}
-            </form>
-        </div>;
+            <div className="MainContent">
+                <div>
+                    {guessDiv}
+                    {question}
+                    <form onSubmit={this.handleFormSubmit}>
+                        {questionValues}
+                        {questionValues &&
+                            <div className="Form-item">
+                                <button type="submit" className="Primary-button" name="GuessNextBtn">Try to guess!</button>
+                            </div>}
+                    </form>
+                </div>
+            </div>
+            <div className="RightContent"> Right </div>
+        </div >;
     }
 }

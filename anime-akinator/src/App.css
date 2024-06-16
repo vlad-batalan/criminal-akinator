@@ -18,6 +18,7 @@
   justify-content: center;
   font-size: calc(10px + vmin);
   color: white;
+  background-color: #455065;
 }
 
 .App-link {
@@ -79,4 +80,100 @@
   touch-action: manipulation;
 
   cursor: pointer;
+}
+
+.MainContent {
+  height: 100vh;
+  padding-top: 60px;
+  background-color: #282c34;
+  margin: auto;
+  float: left;
+  width: 40%;
+}
+
+.MainContent img {
+  min-width: 60%;
+}
+
+.LeftContent {
+  background-color: #111;
+  height: 100vh;
+  width: 30%;
+  float: left;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.LeftContent div {
+  padding: 8px 8px 8px 32px;
+  font-size: 16px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.LeftContent div:hover {
+  color: #f1f1f1;
+}
+
+.RightContent {
+  background-color: #111;
+  float: right;
+  width: 30%;
+  height: 100vh;
+  transition: 0.5s;
+  overflow-x: hidden;  
+  padding-top: 60px;
+}
+
+
+
+.left-nav {
+  height: 100%;
+  width: 250px;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.left-nav div {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 16px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.left-nav div:hover {
+  color: #f1f1f1;
+}
+
+.column {
+  float: left;
+  width: 20%;
+  padding: 20px;
+}
+
+.row {
+  height: 100%;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the three columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+  }
 }
