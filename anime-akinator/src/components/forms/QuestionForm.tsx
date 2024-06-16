@@ -12,7 +12,8 @@ export interface QuestionFormState {
     strategy: string,
     answerValues?: string[],
     question?: string,
-    guess?: string
+    guess?: string,
+    guessImageUrl?: string,
     gameType: string
 }
 
@@ -31,13 +32,13 @@ export class QuestionForm extends React.Component<QuestionFormProps, QuestionFor
             answerValues: [],
             question: undefined,
             guess: undefined,
+            guessImageUrl: undefined,
             gameType: "anime"
         }
 
         this.resetGame = this.resetGame.bind(this);
         this.guess = this.guess.bind(this);
         this.handleStrategyChange = this.handleStrategyChange.bind(this);
-        this.getCharacterImage = this.getCharacterImage.bind(this);
         this.handleAnimeResetGame = this.handleAnimeResetGame.bind(this);
         this.handleCriminalResetGame = this.handleCriminalResetGame.bind(this);
         this.handleFormSubmit = this.handleFormSubmit.bind(this);
@@ -55,6 +56,17 @@ export class QuestionForm extends React.Component<QuestionFormProps, QuestionFor
                     question: result.question,
                     guess: result.guess
                 });
+
+                // If a guess is provided, set the image link also.
+                if (result.guess) {
+                    const category = (this.state.gameType === "anime" ? "1" : "0");
+                    this.apiClient._get(`media/${result.guess}?category=${category}`)
+                        .then(response => {
+                            // ToDo: Check files are provided.
+                            console.log(`Response from GET media/${result.guess}?category=${category}: ${JSON.stringify(response.data)}`)
+                            this.setState({guessImageUrl: response.data["files"][0]["thumbnailLink"]});
+                        })
+                }
             });
     }
 
@@ -63,15 +75,12 @@ export class QuestionForm extends React.Component<QuestionFormProps, QuestionFor
         this.setState({ questionHistory: [] });
 
         const strategy = this.state.strategy;
+        this.setState({guessImageUrl: undefined});
 
         const guessInput = {
             questions: []
         } as GuessInput;
         this.guess(guessInput, gameType, strategy);
-    }
-
-    getCharacterImage(query: string): string {
-        return process.env.PUBLIC_URL + `/characters/${query}`;
     }
 
     handleAnimeResetGame(event: MouseEvent) {
@@ -151,11 +160,11 @@ export class QuestionForm extends React.Component<QuestionFormProps, QuestionFor
 
         let guessDiv = null;
         if (this.state.guess) {
-            const imageUrl = this.getCharacterImage(this.state.guess!)
+            const imageUrl = this.state.guessImageUrl;
 
             guessDiv = <div>
                 <p>My guess for you is: {this.state.guess}</p>
-                <img src={imageUrl} alt={`${this.state.guess}.png`}/>
+                <img src={imageUrl} alt={this.state.guess}/>
             </div>
         }
 

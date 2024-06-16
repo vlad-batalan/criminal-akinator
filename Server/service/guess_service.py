@@ -5,14 +5,15 @@ import fastapi
 import logging
 
 from model.dto.guess_model import GuessInput, GuessOutput, Question
-from service.data_retrieval_service import DataRetrievalService
+from service.mongo_service import MongoService
 from service.find_question_service import FindQuestionService, FindStrategy
 
 logger = logging.getLogger(__name__)
 
 
 class GuessService:
-    def __init__(self, storage_service: DataRetrievalService, find_question_service: FindQuestionService,
+
+    def __init__(self, storage_service: MongoService, find_question_service: FindQuestionService,
                  target_field: str):
         self.storage_service = storage_service
         self.find_question_service = find_question_service

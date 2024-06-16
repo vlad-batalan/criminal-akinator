@@ -6,7 +6,7 @@ from model.dto.guess_model import Question
 logger = logging.getLogger(__name__)
 
 
-class DataRetrievalService:
+class MongoService:
     __KNOWLEDGE_COLLECTION_NAME = 'knowledge'
     __METADATA_COLLECTION_NAME = 'metadata'
     __ATTRIBUTE_COLLECTION_NAME = 'attributes'
@@ -19,7 +19,7 @@ class DataRetrievalService:
         def create_attrib_condition(attr_name, attr_answer):
             return [{attr_name: attr_answer}, {attr_name: {'$exists': False}}]
 
-        knowledge_collection = self.db[DataRetrievalService.__KNOWLEDGE_COLLECTION_NAME]
+        knowledge_collection = self.db[MongoService.__KNOWLEDGE_COLLECTION_NAME]
 
         # Create query based on questions.
         # There might be items that do not contain the attribute. We do not want to exclude those.
@@ -41,11 +41,11 @@ class DataRetrievalService:
         return knowledge_collection.find(query, projection)
 
     def get_target_field(self) -> str:
-        metadata_collection = self.db[DataRetrievalService.__METADATA_COLLECTION_NAME]
+        metadata_collection = self.db[MongoService.__METADATA_COLLECTION_NAME]
         return metadata_collection.find_one().get('target_column')
 
     def get_attribute_values(self, attribute_name: str) -> list[str]:
-        attribute_collection = self.db[DataRetrievalService.__ATTRIBUTE_COLLECTION_NAME]
+        attribute_collection = self.db[MongoService.__ATTRIBUTE_COLLECTION_NAME]
         query = {'_id': attribute_name}
         projection = {'_id': 0}
         return attribute_collection.find_one(query, projection)['values']

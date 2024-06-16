@@ -1,14 +1,16 @@
 from __future__ import annotations
 
 import logging
+from typing import Annotated
 
 import fastapi
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from business.guess_business import post_guess_prediction_anime, post_guess_prediction_criminals
+from business.business import post_guess_prediction_anime, post_guess_prediction_criminals, retrieve_file_drive
 from model.dto.guess_model import GuessInput, GuessOutput
 from service.find_question_service import FindStrategy
+from service.google_drive_service import MediaCategory
 
 origins = [
     "http://localhost:3000"
@@ -52,3 +54,8 @@ async def get_guess_criminals(guess: GuessInput, strategy: str = "information_ga
         return post_guess_prediction_criminals(guess, find_strategy)
     else:
         raise fastapi.HTTPException(status_code=400, detail=f"Not supported strategy: {strategy}")
+
+
+@app.get("/media/{media_id}")
+async def get_media(media_id: str, category: int):
+    return retrieve_file_drive(media_id, MediaCategory(category))
