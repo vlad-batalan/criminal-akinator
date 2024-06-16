@@ -1,3 +1,5 @@
+import fastapi
+
 from model.dto.guess_model import GuessOutput, GuessInput
 from service.google_drive_service import GoogleDriveService, MediaCategory
 from service.mongo_service import MongoService
@@ -37,4 +39,28 @@ def post_guess_prediction_criminals(guess_input: GuessInput, strategy: FindStrat
 
 
 def retrieve_file_drive(file_name: str, category: MediaCategory):
+
+
     return google_drive_service.get_image_url(file_name, category)
+
+
+def retrieve_question(question: str, set_type: str):
+    question_data = None
+    if set_type == "anime":
+        question_data = anime_storage_service.get_question(question)
+    if set_type == "criminal":
+        # Return from criminal set.
+        question_data = criminal_storage_service.get_question(question)
+
+    if question_data is None:
+        raise fastapi.HTTPException(400, "Invalid set type! Use 'anime' or 'criminal'!")
+
+    # Fetch temporary image urls.
+    if "metadata" in question_data:
+        for element in question_data["metadata"]:
+            if "image_id" in element:
+                image_id = element["image_id"]
+                # Get the image
+                element["image_url"] = google_drive_service.get_image_url(image_id, MediaCategory.METADATA)["files"][0][
+                    "thumbnailLink"]
+    return question_data

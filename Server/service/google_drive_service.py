@@ -26,9 +26,17 @@ class GoogleDriveService:
     def get_image_url(self, file_name: str, category: MediaCategory):
         folder_id = self.__get_folder_id(category)
         results = self.service.files().list(pageSize=1000,
-                                            fields="nextPageToken, files(id, name, mimeType, size, modifiedTime, thumbnailLink)",
+                                            fields="nextPageToken, files(id, name, mimeType, size, thumbnailLink)",
                                             q=f'"{folder_id}" in parents and name contains "{file_name}"').execute()
+        for result in results["files"]:
+            if "thumbnailLink" in result:
+                result["thumbnailLink"] = self.__get_max_size_thumbnail(result["thumbnailLink"])
+
         return results
+
+    def __get_max_size_thumbnail(self, thumbnail_link: str):
+        to_trim_size = len(thumbnail_link.split("=")[-1]) + 1
+        return thumbnail_link[0:-to_trim_size]
 
     def __get_folder_id(self, category: MediaCategory) -> str:
         if category == MediaCategory.CRIMINAL_PROFILE:

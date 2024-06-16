@@ -7,7 +7,8 @@ import fastapi
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from business.business import post_guess_prediction_anime, post_guess_prediction_criminals, retrieve_file_drive
+from business.business import post_guess_prediction_anime, post_guess_prediction_criminals, retrieve_file_drive, \
+    retrieve_question
 from model.dto.guess_model import GuessInput, GuessOutput
 from service.find_question_service import FindStrategy
 from service.google_drive_service import MediaCategory
@@ -59,3 +60,13 @@ async def get_guess_criminals(guess: GuessInput, strategy: str = "information_ga
 @app.get("/media/{media_id}")
 async def get_media(media_id: str, category: int):
     return retrieve_file_drive(media_id, MediaCategory(category))
+
+
+@app.get("/question/anime/{question}")
+async def get_question_anime(question: str):
+    return retrieve_question(question, "anime")
+
+
+@app.get("/question/criminal/{question}")
+async def get_question_criminal(question: str):
+    return retrieve_question(question, "criminal")

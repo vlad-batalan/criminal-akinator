@@ -49,3 +49,9 @@ class MongoService:
         query = {'_id': attribute_name}
         projection = {'_id': 0}
         return attribute_collection.find_one(query, projection)['values']
+
+    def get_question(self, question):
+        attribute_collection = self.db[MongoService.__ATTRIBUTE_COLLECTION_NAME]
+        query = {'_id': question}
+        return attribute_collection.find_one(query)
+

@@ -1,7 +1,10 @@
 import React, { ChangeEvent, FormEvent, MouseEvent } from "react"
-import { RadioComponent } from "./input/RadioComponent";
-import ApiClient from "../../api/ApiClient";
-import { GuessInput, GuessOutput, Question } from "../../api/model/GuessModel";
+import { RadioComponent } from "./forms/input/RadioComponent";
+import ApiClient from "../api/ApiClient";
+import { GuessInput, GuessOutput, Question } from "../api/model/GuessModel";
+import { QuestionMetadata } from "../api/model/QuestionMetadataModel";
+import Modal from "./modal/Modal";
+
 
 export interface QuestionFormProps {
     apiClient: ApiClient
@@ -14,7 +17,10 @@ export interface QuestionPageState {
     question?: string,
     guess?: string,
     guessImageUrl?: string,
-    gameType: string
+    gameType: string,
+    questionMetadata: QuestionMetadata[];
+    modalOpen: boolean
+    modalUrl?: string
 }
 
 export const DONT_KNOW_VALUE = "Don't know";
@@ -33,7 +39,10 @@ export class QuestionPage extends React.Component<QuestionFormProps, QuestionPag
             question: undefined,
             guess: undefined,
             guessImageUrl: undefined,
-            gameType: "anime"
+            gameType: "anime",
+            questionMetadata: [],
+            modalOpen: false,
+            modalUrl: undefined
         }
 
         this.resetGame = this.resetGame.bind(this);
@@ -42,6 +51,19 @@ export class QuestionPage extends React.Component<QuestionFormProps, QuestionPag
         this.handleAnimeResetGame = this.handleAnimeResetGame.bind(this);
         this.handleCriminalResetGame = this.handleCriminalResetGame.bind(this);
         this.handleFormSubmit = this.handleFormSubmit.bind(this);
+        this.fillQuestionMetadata = this.fillQuestionMetadata.bind(this);
+
+    }
+
+    fillQuestionMetadata(question: string) {
+        // Call API to get metadata regarding the specified question.
+        this.apiClient._get(`question/${this.state.gameType}/${question}`)
+            .then(response => {
+                if (response.data["metadata"]) {
+                    const metadataComponents: QuestionMetadata[] = response.data["metadata"];
+                    this.setState({ questionMetadata: metadataComponents });
+                }
+            });
     }
 
     guess(input: GuessInput, gameType: string, strategy: string): void {
@@ -57,6 +79,11 @@ export class QuestionPage extends React.Component<QuestionFormProps, QuestionPag
                     guess: result.guess
                 });
 
+                // A new question requires changing the question metadata.
+                if (result.question) {
+                    this.fillQuestionMetadata(result.question!);
+                }
+
                 // If a guess is provided, set the image link also.
                 if (result.guess) {
                     const category = (this.state.gameType === "anime" ? "1" : "0");
@@ -70,12 +97,29 @@ export class QuestionPage extends React.Component<QuestionFormProps, QuestionPag
             });
     }
 
+    openImageModal(imageUrl: string) {
+        this.setState({
+            modalOpen: true,
+            modalUrl: imageUrl
+        });
+    }
+
+    closeImageModal() {
+        this.setState({
+            modalOpen: false,
+            modalUrl: undefined
+        });
+    }
+
     resetGame(gameType: string): void {
-        // Reset question History.
-        this.setState({ questionHistory: [] });
+        // Reset to defaults.
+        this.setState({
+            questionHistory: [],
+            guessImageUrl: undefined,
+            questionMetadata: []
+        });
 
         const strategy = this.state.strategy;
-        this.setState({ guessImageUrl: undefined });
 
         const guessInput = {
             questions: []
@@ -158,13 +202,28 @@ export class QuestionPage extends React.Component<QuestionFormProps, QuestionPag
                 </div>
         }
 
+        // If a guess is made, update the main container.
         let guessDiv = null;
         if (this.state.guess) {
             const imageUrl = this.state.guessImageUrl;
 
             guessDiv = <div>
                 <h3>My guess for you is: {this.state.guess}</h3>
-                <img src={imageUrl} alt={this.state.guess}/>
+                <img src={imageUrl} alt={this.state.guess} />
+            </div>
+        }
+
+        // Fill in the question metadata with elements.
+        let questionMetadataDiv = null;
+        if (this.state.questionMetadata) {
+            questionMetadataDiv = <div>
+                {this.state.questionMetadata.map((metadata, index) => (
+                    <div className="DetailBox" key={`metadata-${index}`}>
+                        <p>{metadata.description}</p>
+                        {metadata.image_url && <img src={metadata.image_url!} alt={metadata.image_id!} onClick={(e: MouseEvent) => this.openImageModal(metadata.image_url!)} />}
+                    </div>
+                ))
+                }
             </div>
         }
 
@@ -220,7 +279,16 @@ export class QuestionPage extends React.Component<QuestionFormProps, QuestionPag
                     </form>
                 </div>
             </div>
-            <div className="RightContent"> Right </div>
+            <div className="RightContent">
+                {questionMetadataDiv}
+            </div>
+            <Modal 
+                handleClose={() => this.closeImageModal()} 
+                isOpen={this.state.modalOpen}>
+                <div>
+                    {this.state.modalUrl && <img src={this.state.modalUrl}></img>}
+                </div>
+            </Modal>
         </div >;
     }
 }

@@ -1,6 +1,6 @@
 import './App.css';
 import ApiClient from './api/ApiClient';
-import { QuestionPage } from './components/forms/QuestionPage';
+import { QuestionPage } from './components/QuestionPage';
 import React from 'react';
 
 function App() {
