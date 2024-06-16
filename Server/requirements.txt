@@ -3,3 +3,4 @@ fastapi~=0.111.0
 pandas~=2.2.2
 scikit-learn~=1.5.0
 pymongo~=4.7.3
+mrjob~=0.7.4

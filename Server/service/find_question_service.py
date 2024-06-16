@@ -9,7 +9,7 @@ from sklearn import preprocessing
 
 from model.dto.guess_model import GuessOutput
 from service.strategy.strategies import FindStrategy, InformationGainQuestionStrategy, GainRatioQuestionStrategy, \
-    GiniQuestionStrategy, InformationGainMRQuestionStrategy, GiniMRQuestionStrategy
+    GiniQuestionStrategy, InformationGainMRQuestionStrategy, GiniMRQuestionStrategy, GainRatioMRQuestionStrategy
 
 logger = logging.getLogger(__name__)
 
@@ -20,6 +20,8 @@ def to_dataframe(section: list[dict]) -> DataFrame:
 
 def trim_data(data: DataFrame):
     if '_id' in data.columns:
+        data.drop('_id', axis=1, inplace=True)
+    if 'Id' in data.columns:
         data.drop('_id', axis=1, inplace=True)
 
 
@@ -40,7 +42,8 @@ class FindQuestionService(IFindQuestionService):
             GainRatioQuestionStrategy(),
             GiniQuestionStrategy(),
             InformationGainMRQuestionStrategy(),
-            GiniMRQuestionStrategy()
+            GiniMRQuestionStrategy(),
+            GainRatioMRQuestionStrategy()
         ]
 
     def find_best_question(self, section: list[dict], target_field: str,

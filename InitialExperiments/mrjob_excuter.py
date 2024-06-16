@@ -5,7 +5,7 @@ import uuid
 import pandas as pd
 from mrjob.job import MRJob
 
-from info_gain_map_reduce import InfoGainMapReducer, GiniMapReducer
+from mr_jobs import InfoGainMapReducer, GiniMapReducer, GainRatioMapReducer
 
 
 def get_map_reducer(name: str, tmp_input_path: str, target_field: str) -> MRJob | None:
@@ -15,11 +15,19 @@ def get_map_reducer(name: str, tmp_input_path: str, target_field: str) -> MRJob 
     if name == "gini_impurity":
         return GiniMapReducer(args=[tmp_input_path, "--target", target_field])
 
+    if name == "gain_ratio":
+        return GainRatioMapReducer(args=[tmp_input_path, "--target", target_field])
+
     return None
 
 
 def execute_with_runner(job_name: str, dataset_path: str, target_field: str):
-    df = pd.read_csv(dataset_path).drop("_id", axis=1)
+    df = pd.read_csv(dataset_path)
+    if "_id" in df.columns:
+        df = df.drop("_id", axis=1)
+
+    if "Id" in df.columns:
+        df = df.drop("Id", axis=1)
 
     # 1 write data to Temp file.
     tmp_mrjob_input_path = "Temp/" + str(uuid.uuid4()) + ".csv"
@@ -48,7 +56,7 @@ def execute_with_runner(job_name: str, dataset_path: str, target_field: str):
 
 if __name__ == "__main__":
     dataset_path = "Resources/CriminalAkinatorDB.knowledge.csv"
-    job_name = "gini_impurity"
+    job_name = "gain_ratio"
     target_value = "ProfileId"
 
     execute_with_runner(job_name, dataset_path, target_value)

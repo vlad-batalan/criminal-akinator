@@ -31,7 +31,8 @@ strategy_map = {
     "gini_impurity": FindStrategy.GINI_IMPURITY,
     "gain_ratio": FindStrategy.GAIN_RATIO,
     "mr_information_gain": FindStrategy.INFORMATION_GAIN_MR,
-    "mr_gini_impurity": FindStrategy.GINI_IMPURITY_MR
+    "mr_gini_impurity": FindStrategy.GINI_IMPURITY_MR,
+    "mr_gain_ratio": FindStrategy.GAIN_RATIO_MR
 }
 
 

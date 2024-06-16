@@ -11,7 +11,7 @@ from pandas import DataFrame
 from sklearn import preprocessing
 from sklearn.tree import DecisionTreeClassifier
 
-from service.mr.query_finder_jobs import InfoGainMapReducer, GiniMapReducer
+from service.mr.query_finder_jobs import InfoGainMapReducer, GiniMapReducer, GainRatioMapReducer
 
 logger = logging.getLogger(__name__)
 
@@ -69,6 +69,7 @@ class InformationGainQuestionStrategy(IFindBestQuestionStrategy):
         features_list = list(filter(lambda feature: feature != target_feature, data.columns))
 
         # Get best feature.
+
         best_feature = max(features_list,
                            key=lambda feature: self.__get_information_gain(data, feature, target_feature))
 
@@ -94,6 +95,7 @@ class InformationGainQuestionStrategy(IFindBestQuestionStrategy):
         entropy_outcome = self.__get_entropy(filtered_data, target_feature)
         information_gain = entropy_outcome - weighted_entropy
 
+        print(f"Feature: {feature}, Information Gain: {information_gain}")
         return information_gain
 
     def __get_entropy(self, data: DataFrame, target_feature: str) -> float:
@@ -376,3 +378,12 @@ class GiniMRQuestionStrategy(IMRJobQuestionStrategy):
 
     def init_runner(self, input_file_path, target_feature) -> MRJob:
         return GiniMapReducer(args=[input_file_path, "--target", target_feature])
+
+
+class GainRatioMRQuestionStrategy(IMRJobQuestionStrategy):
+
+    def get_strategy_type(self) -> FindStrategy:
+        return FindStrategy.GAIN_RATIO_MR
+
+    def init_runner(self, input_file_path, target_feature) -> MRJob:
+        return GainRatioMapReducer(args=[input_file_path, "--target", target_feature])
