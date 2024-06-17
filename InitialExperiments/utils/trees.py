@@ -1,4 +1,4 @@
-from typing import List, Dict
+from typing import List
 
 import pandas as pd
 from C45 import C45Classifier

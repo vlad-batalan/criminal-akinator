@@ -15,7 +15,7 @@ def start_guess_game_id3(tree: Dict):
 
     key = list(head)[0]
     while not isinstance(head, str):
-        print(f"What is {key}?")
+        print(f"{key}?")
         print(f"Possible values: {list(head[key])}")
 
         option = input("Your response: ")

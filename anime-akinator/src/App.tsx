@@ -11,7 +11,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Akinator for forinsics</h1>
+        <h1>Akinator for forensics</h1>
         <p> You play the role of a witness. Please answer the questions to find out who is the criminal:</p>
       </header>
       <QuestionPage apiClient={apiClient} />
