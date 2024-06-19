@@ -94,9 +94,10 @@ export class QuestionPage extends React.Component<QuestionFormProps, QuestionPag
                     const category = (this.state.gameType === "anime" ? "1" : "0");
                     this.apiClient._get(`media/${result.guess}?category=${category}`)
                         .then(response => {
-                            // ToDo: Check files are provided.
-                            console.log(`Response from GET media/${result.guess}?category=${category}: ${JSON.stringify(response.data)}`)
-                            this.setState({ guessImageUrl: response.data["files"][0]["thumbnailLink"] });
+                            if (response.data["files"]) {
+                                console.log(`Response from GET media/${result.guess}?category=${category}: ${JSON.stringify(response.data)}`)
+                                this.setState({ guessImageUrl: response.data["files"][0]["thumbnailLink"] });
+                            }
                         })
                 }
             });
@@ -145,6 +146,7 @@ export class QuestionPage extends React.Component<QuestionFormProps, QuestionPag
     }
 
     handleStrategyChange(event: ChangeEvent<HTMLInputElement>) {
+        event.preventDefault();
         if (event.target.checked) {
             this.setState({ strategy: event.target.value });
         }
@@ -210,7 +212,7 @@ export class QuestionPage extends React.Component<QuestionFormProps, QuestionPag
         // If a guess is made, update the main container.
         let guessDiv = null;
         if (this.state.guess) {
-            const imageUrl = this.state.guessImageUrl;
+            const imageUrl = this.state.guessImageUrl ? this.state.guessImageUrl : "";
 
             guessDiv = <div>
                 <h3>My guess for you is: {this.state.guess}</h3>
