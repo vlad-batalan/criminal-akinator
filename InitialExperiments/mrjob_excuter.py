@@ -56,7 +56,7 @@ def execute_with_runner(job_name: str, dataset_path: str, target_field: str):
 
 if __name__ == "__main__":
     dataset_path = "Resources/CriminalAkinatorDB.knowledge.16-06-2024.csv"
-    job_name = "gini_impurity"
+    job_name = "gain_ratio"
     target_value = "ProfileId"
 
     execute_with_runner(job_name, dataset_path, target_value)

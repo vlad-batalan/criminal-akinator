@@ -100,19 +100,19 @@ class InfoGainMapReducer(MRJob):
             # {key: column_name, value: ([str] as attr_values, [str] as target_values)
             MRStep(mapper_raw=self.read_csv_data_mapper_raw),
 
-            # Step 2: Count all, count per attribute, count per attribute and value.
+            # # Step 2: Count all, count per attribute, count per attribute and value.
             MRStep(mapper=self.mapper_split_count,
                    reducer=self.reducer_count),
-
-            # Step 3: Calculate entropy per attribute per attribute value.
+            #
+            # # Step 3: Calculate entropy per attribute per attribute value.
             MRStep(mapper=self.mapper_count_per_attribute_per_value,
                    reducer=self.reducer_entropy_per_attribute_per_value),
-
-            # Step 4: Calculate Info gain per attribute.
+            #
+            # # Step 4: Calculate Info gain per attribute.
             MRStep(mapper=self.mapper_gain_per_attribute,
                    reducer=self.reducer_info_gain_per_attribute),
-
-            # Step 5: Get the best attribute.
+            #
+            # # Step 5: Get the best attribute.
             MRStep(mapper=self.mapper_all,
                    reducer=self.reducer_result),
         ]

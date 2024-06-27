@@ -52,6 +52,7 @@ export class QuestionPage extends React.Component<QuestionFormProps, QuestionPag
         this.handleCriminalResetGame = this.handleCriminalResetGame.bind(this);
         this.handleFormSubmit = this.handleFormSubmit.bind(this);
         this.fillQuestionMetadata = this.fillQuestionMetadata.bind(this);
+        this.limitThumbnailSize = this.limitThumbnailSize.bind(this);
 
     }
 
@@ -64,6 +65,10 @@ export class QuestionPage extends React.Component<QuestionFormProps, QuestionPag
                     this.setState({ questionMetadata: metadataComponents });
                 }
             });
+    }
+
+    limitThumbnailSize(url: string): string {
+        return `${url}=s500`;
     }
 
     guess(input: GuessInput, gameType: string, strategy: string): void {
@@ -94,9 +99,9 @@ export class QuestionPage extends React.Component<QuestionFormProps, QuestionPag
                     const category = (this.state.gameType === "anime" ? "1" : "0");
                     this.apiClient._get(`media/${result.guess}?category=${category}`)
                         .then(response => {
-                            if (response.data["files"]) {
+                            if (response.data["files"] && response.data["files"].length > 0) {
                                 console.log(`Response from GET media/${result.guess}?category=${category}: ${JSON.stringify(response.data)}`)
-                                this.setState({ guessImageUrl: response.data["files"][0]["thumbnailLink"] });
+                                this.setState({ guessImageUrl: this.limitThumbnailSize(response.data["files"][0]["thumbnailLink"]) });
                             }
                         })
                 }
@@ -227,7 +232,7 @@ export class QuestionPage extends React.Component<QuestionFormProps, QuestionPag
                 {this.state.questionMetadata.map((metadata, index) => (
                     <div className="DetailBox" key={`metadata-${index}`}>
                         <p>{metadata.description}</p>
-                        {metadata.image_url && <img src={metadata.image_url!} alt={metadata.image_id!} onClick={(e: MouseEvent) => this.openImageModal(metadata.image_url!)} />}
+                        {metadata.image_url && <img src={this.limitThumbnailSize(metadata.image_url!)} alt={metadata.image_id!} onClick={(e: MouseEvent) => this.openImageModal(this.limitThumbnailSize(metadata.image_url!))} />}
                     </div>
                 ))
                 }
