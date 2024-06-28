@@ -222,7 +222,7 @@ public class AppController {
 
             // Choose the lowest number not in existing profiles.
             Integer nextProfileId = null;
-            for (int i = 1; i <= PROFILES_TOTAL_NUMBER; i++) {
+            for (int i = 0; i <= PROFILES_TOTAL_NUMBER; i++) {
                 if (!existingProfiles.contains(i)) {
                     nextProfileId = i;
                     break;
